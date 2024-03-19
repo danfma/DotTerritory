@@ -1,0 +1,7 @@
+[msbuild]
+project = "DotTerritory/DotTerritory.csproj"
+
+[github]
+user = "danfma"
+repo = "https://github.com/danfma/DotTerritory"
+
