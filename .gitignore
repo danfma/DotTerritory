@@ -3,6 +3,9 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+# dotnet-releaser
+.artifacts/
+
 # dotenv files
 .env
 

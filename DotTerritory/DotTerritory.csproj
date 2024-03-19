@@ -6,10 +6,10 @@
         <Nullable>enable</Nullable>
         <Version>0.0.1</Version>
         <Title>DotTerritory</Title>
-        <Authors>Daniel Ferreira Monteiro Alves &lt;danfma@gmail.com&gt;</Authors>
+        <Authors>Daniel Ferreira Monteiro Alves</Authors>
         <Description>A port of the excellent TurfJs library to .NET over existing libraries like NetTopologySuite and UnitsNet.  </Description>
         <PackageProjectUrl>https://github.com/danfma/DotTerritory</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/danfma/DotTerritory?tab=MIT-1-ov-file</PackageLicenseUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/danfma/DotTerritory</RepositoryUrl>
         <RepositoryType>GIT</RepositoryType>
         <PackageTags>TurfJS NetToplogySuite UnitsNet GIS</PackageTags>

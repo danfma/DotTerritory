@@ -24,8 +24,6 @@ jobs:
       run: dotnet restore
     - name: Install tools
       run: dotnet tool install --global dotnet-releaser
-    - name: Build
-      run: dotnet-releaser build --force dotnet-releaser.toml
-    - name: Publish
+    - name: Build, Tests, Cover, Pack and Publish (on push tag)
       shell: bash
       run: dotnet-releaser run --nuget-token "${{secrets.NUGET_TOKEN}}" --github-token "${{secrets.GITHUB_TOKEN}}" dotnet-releaser.toml

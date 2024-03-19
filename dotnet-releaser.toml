@@ -1,7 +1,15 @@
 [msbuild]
 project = "DotTerritory/DotTerritory.csproj"
+artifacts_folder = ".artifacts"
+configuration = "Release"
+
+[msbuild.properties]
+PublishTrimmed = false
+PublishSingleFile = false
+PublishReadyToRun = false
+SelfContained = false
 
 [github]
 user = "danfma"
-repo = "https://github.com/danfma/DotTerritory"
+repo = "DotTerritory"
 
