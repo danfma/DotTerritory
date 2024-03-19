@@ -3,8 +3,18 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
-# dotnet-releaser
-.artifacts/
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# Remove artifacts produced by dotnet-releaser
+artifacts-dotnet-releaser/
 
 # dotenv files
 .env
