@@ -26,4 +26,4 @@ jobs:
       run: dotnet tool install --global dotnet-releaser
     - name: Build, Tests, Cover, Pack and Publish (on push tag)
       shell: bash
-      run: dotnet-releaser run --nuget-token "${{secrets.NUGET_TOKEN}}" --github-token "${{secrets.GITHUB_TOKEN}}" dotnet-releaser.toml
+      run: dotnet-releaser publish --force --nuget-token "${{secrets.NUGET_TOKEN}}" --github-token "${{secrets.GITHUB_TOKEN}}" dotnet-releaser.toml
