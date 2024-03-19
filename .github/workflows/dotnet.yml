@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
@@ -28,4 +30,4 @@ jobs:
     
     - name: Build, Tests, Cover, Pack and Publish (on push tag)
       shell: bash
-      run: dotnet-releaser publish --force --nuget-token "${{secrets.NUGET_TOKEN}}" --github-token "${{secrets.GITHUB_TOKEN}}" src/dotnet-releaser.toml
+      run: dotnet-releaser run --force --nuget-token "${{secrets.NUGET_TOKEN}}" --github-token "${{secrets.GITHUB_TOKEN}}" src/dotnet-releaser.toml
