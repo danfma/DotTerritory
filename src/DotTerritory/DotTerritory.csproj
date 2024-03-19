@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <Version>0.0.1</Version>
+        <IsPackable>true</IsPackable>
+        <Title>DotTerritory</Title>
+        <Description>A port of the excellent TurfJs library to .NET over existing libraries like NetTopologySuite and UnitsNet.</Description>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Copyright>Daniel Ferreira Monteiro Alves</Copyright>
+        <Authors>Daniel Ferreira Monteiro Alves</Authors>
+        <PackageProjectUrl>https://github.com/danfma/DotTerritory</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/danfma/DotTerritory</RepositoryUrl>
+        <RepositoryType>GIT</RepositoryType>
+        <PackageTags>TurfJS NetToplogySuite UnitsNet GIS</PackageTags>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NetTopologySuite" Version="2.5.0"/>
+        <PackageReference Include="UnitsNet" Version="5.38.2"/>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
+        <PackageReference Include="MinVer" Version="4.3.0" PrivateAssets="All">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+</Project>
