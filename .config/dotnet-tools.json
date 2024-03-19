@@ -7,6 +7,12 @@
       "commands": [
         "dotnet-releaser"
       ]
+    },
+    "csharpier": {
+      "version": "0.27.3",
+      "commands": [
+        "dotnet-csharpier"
+      ]
     }
   }
 }

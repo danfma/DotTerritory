@@ -95,8 +95,7 @@ public static class Territory
         var length = Length.FromMeters(0);
 
         return multiLines
-            .Geometries
-            .OfType<LineString>()
+            .Geometries.OfType<LineString>()
             .Aggregate(length, (current, segment) => current + GetLength(segment));
     }
 
