@@ -22,6 +22,8 @@ jobs:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
+    - name: Install tools
+      run: dotnet tool install --global dotnet-releaser
     - name: Build
       run: dotnet-releaser build --force dotnet-releaser.toml
     - name: Publish
