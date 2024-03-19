@@ -5,6 +5,4 @@ configuration = "Release"
 [github]
 user = "danfma"
 repo = "DotTerritory"
-
-[github]
 version_prefix = "v"
