@@ -1,6 +1,5 @@
 [msbuild]
 project = "DotTerritory/DotTerritory.csproj"
-artifacts_folder = ".artifacts"
 configuration = "Release"
 
 [msbuild.properties]
