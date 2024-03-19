@@ -5,6 +5,7 @@ configuration = "Release"
 [github]
 user = "danfma"
 repo = "DotTerritory"
+version_prefix =  "v"
 
 [changelog]
 owners = ["danfma"]
