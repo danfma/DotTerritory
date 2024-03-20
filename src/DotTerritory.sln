@@ -9,6 +9,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{2385
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotTerritory.Playground", "samples\DotTerritory.Playground\DotTerritory.Playground.csproj", "{426FD496-6647-4565-9A2A-CA01F7B80D27}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C52EA67E-7F49-4A9A-BBC3-54622A406F84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotTerritory.Tests", "tests\DotTerritory.Tests\DotTerritory.Tests.csproj", "{F181E439-9084-4A2F-82EC-F0CAFA93A5A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "benchmark", "benchmark", "{C9006ED4-86CB-45CC-B309-FABCDDC9CF5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeAndMemoryUsage", "benchmark\TimeAndMemoryUsage\TimeAndMemoryUsage.csproj", "{A64A3345-99FE-4269-B2E2-13E8EE3BA272}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,8 +34,18 @@ Global
 		{426FD496-6647-4565-9A2A-CA01F7B80D27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{426FD496-6647-4565-9A2A-CA01F7B80D27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{426FD496-6647-4565-9A2A-CA01F7B80D27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F181E439-9084-4A2F-82EC-F0CAFA93A5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F181E439-9084-4A2F-82EC-F0CAFA93A5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F181E439-9084-4A2F-82EC-F0CAFA93A5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F181E439-9084-4A2F-82EC-F0CAFA93A5A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A64A3345-99FE-4269-B2E2-13E8EE3BA272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A64A3345-99FE-4269-B2E2-13E8EE3BA272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A64A3345-99FE-4269-B2E2-13E8EE3BA272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A64A3345-99FE-4269-B2E2-13E8EE3BA272}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{426FD496-6647-4565-9A2A-CA01F7B80D27} = {23850557-EF56-4E5E-B5D9-89EEC82C97D3}
+		{F181E439-9084-4A2F-82EC-F0CAFA93A5A0} = {C52EA67E-7F49-4A9A-BBC3-54622A406F84}
+		{A64A3345-99FE-4269-B2E2-13E8EE3BA272} = {C9006ED4-86CB-45CC-B309-FABCDDC9CF5C}
 	EndGlobalSection
 EndGlobal

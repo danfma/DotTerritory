@@ -4,7 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Version>0.1.0</Version>
+        <Version>0.2.0</Version>
         <IsPackable>true</IsPackable>
         <Title>DotTerritory</Title>
         <Description>A port of the excellent TurfJs library to .NET over existing libraries like NetTopologySuite and UnitsNet.</Description>
@@ -17,7 +17,7 @@
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/danfma/DotTerritory</RepositoryUrl>
         <RepositoryType>GIT</RepositoryType>
-        <PackageTags>TurfJS NetToplogySuite UnitsNet GIS</PackageTags>
+        <PackageTags>TurfJS NetTopologySuite UnitsNet GIS</PackageTags>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
     </PropertyGroup>
 
