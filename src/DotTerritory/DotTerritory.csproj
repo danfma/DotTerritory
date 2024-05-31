@@ -4,7 +4,8 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <Version>0.2.0</Version>
+        <Version>0.3.0</Version>
+        <VersionSuffix>alpha</VersionSuffix>
         <IsPackable>true</IsPackable>
         <Title>DotTerritory</Title>
         <Description>A port of the excellent TurfJs library to .NET over existing libraries like NetTopologySuite and UnitsNet.</Description>
@@ -23,7 +24,7 @@
 
     <ItemGroup>
         <PackageReference Include="NetTopologySuite" Version="2.5.0"/>
-        <PackageReference Include="UnitsNet" Version="5.38.2"/>
+        <PackageReference Include="UnitsNet" Version="6.0.0-pre006"/>
         <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
     </ItemGroup>
 
