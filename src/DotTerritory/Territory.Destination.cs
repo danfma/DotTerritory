@@ -1,5 +1,3 @@
-using NetTopologySuite.Geometries;
-
 namespace DotTerritory;
 
 public static partial class Territory
@@ -12,7 +10,7 @@ public static partial class Territory
 
         var latitude2 = Math.Asin(
             Math.Sin(latitude.Radians) * Math.Cos(radians.Radians)
-            + Math.Cos(latitude.Radians) * Math.Sin(radians.Radians) * Math.Cos(bearing.Radians)
+                + Math.Cos(latitude.Radians) * Math.Sin(radians.Radians) * Math.Cos(bearing.Radians)
         );
 
         var longitude2 =

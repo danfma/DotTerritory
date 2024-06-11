@@ -22,7 +22,7 @@ public class DotTerritoryBench
             ]
         );
 
-    [Benchmark(Baseline = true)]
+    [Benchmark, BenchmarkCategory("Along")]
     public Point WalkInLineRing()
     {
         return Territory.WalkAlong(_lineRing, _walkDistance);

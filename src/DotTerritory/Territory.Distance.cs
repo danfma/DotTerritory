@@ -1,5 +1,3 @@
-using NetTopologySuite.Geometries;
-
 namespace DotTerritory;
 
 public static partial class Territory
@@ -14,8 +12,8 @@ public static partial class Territory
         var a =
             Math.Pow(Math.Sin(dLat.Radians / 2), 2)
             + Math.Pow(Math.Sin(dLon.Radians / 2), 2)
-            * Math.Cos(lat1.Radians)
-            * Math.Cos(lat2.Radians);
+                * Math.Cos(lat1.Radians)
+                * Math.Cos(lat2.Radians);
 
         var radians = Angle.FromRadians(2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a)));
 
