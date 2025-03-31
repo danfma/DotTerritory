@@ -1,6 +1,3 @@
-using FluentAssertions;
-using NetTopologySuite.Geometries;
-
 namespace DotTerritory.Tests;
 
 public class BBoxPolygonTest
@@ -14,21 +11,21 @@ public class BBoxPolygonTest
 
         var polygon = Territory.BboxPolygon(bbox);
 
-        polygon.Coordinates.Length.Should().Be(5);
+        polygon.Coordinates.Length.ShouldBe(5);
 
-        polygon.Coordinates[0].X.Should().Be(0);
-        polygon.Coordinates[0].Y.Should().Be(0);
+        polygon.Coordinates[0].X.ShouldBe(0);
+        polygon.Coordinates[0].Y.ShouldBe(0);
 
-        polygon.Coordinates[1].X.Should().Be(10);
-        polygon.Coordinates[1].Y.Should().Be(0);
+        polygon.Coordinates[1].X.ShouldBe(10);
+        polygon.Coordinates[1].Y.ShouldBe(0);
 
-        polygon.Coordinates[2].X.Should().Be(10);
-        polygon.Coordinates[2].Y.Should().Be(10);
+        polygon.Coordinates[2].X.ShouldBe(10);
+        polygon.Coordinates[2].Y.ShouldBe(10);
 
-        polygon.Coordinates[3].X.Should().Be(0);
-        polygon.Coordinates[3].Y.Should().Be(10);
+        polygon.Coordinates[3].X.ShouldBe(0);
+        polygon.Coordinates[3].Y.ShouldBe(10);
 
-        polygon.Coordinates[4].X.Should().Be(0);
-        polygon.Coordinates[4].Y.Should().Be(0);
+        polygon.Coordinates[4].X.ShouldBe(0);
+        polygon.Coordinates[4].Y.ShouldBe(0);
     }
 }

@@ -1,4 +1,3 @@
-using FluentAssertions;
 using NetTopologySuite.Geometries;
 
 namespace DotTerritory.Tests;
@@ -12,11 +11,11 @@ public class ProjectionTest
         var mercatorPoint = Territory.ToMercator(point);
         var wgs84Point = Territory.ToWgs84(mercatorPoint);
 
-        wgs84Point.X.Should().BeApproximately(point.X, 0.0001);
-        wgs84Point.Y.Should().BeApproximately(point.Y, 0.0001);
+        wgs84Point.X.ShouldBe(point.X, tolerance: 0.0001);
+        wgs84Point.Y.ShouldBe(point.Y, tolerance: 0.0001);
 
-        mercatorPoint.X.Should().BeApproximately(-7903683.846322424, 0.001);
-        mercatorPoint.Y.Should().BeApproximately(5012341.663847514, 0.001);
+        mercatorPoint.X.ShouldBe(-7903683.846322424, tolerance: 0.001);
+        mercatorPoint.Y.ShouldBe(5012341.663847514, tolerance: 0.001);
     }
 
     [Fact]
@@ -70,18 +69,10 @@ public class ProjectionTest
 
         for (var i = 0; i < coordinates.Length; i++)
         {
-            wgs84Line.Coordinates[i].X.Should().BeApproximately(coordinates[i][0], 0.0001);
-            wgs84Line.Coordinates[i].Y.Should().BeApproximately(coordinates[i][1], 0.0001);
-
-            mercatorLine
-                .Coordinates[i]
-                .X.Should()
-                .BeApproximately(mercatorCoordinates[i][0], 0.001);
-
-            mercatorLine
-                .Coordinates[i]
-                .Y.Should()
-                .BeApproximately(mercatorCoordinates[i][1], 0.001);
+            wgs84Line.Coordinates[i].X.ShouldBe(coordinates[i][0], tolerance: 0.0001);
+            wgs84Line.Coordinates[i].Y.ShouldBe(coordinates[i][1], tolerance: 0.0001);
+            mercatorLine.Coordinates[i].X.ShouldBe(mercatorCoordinates[i][0], tolerance: 0.001);
+            mercatorLine.Coordinates[i].Y.ShouldBe(mercatorCoordinates[i][1], tolerance: 0.001);
         }
     }
 }

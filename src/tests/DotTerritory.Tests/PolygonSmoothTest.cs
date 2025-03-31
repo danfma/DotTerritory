@@ -1,4 +1,3 @@
-using FluentAssertions;
 using NetTopologySuite.Geometries;
 
 namespace DotTerritory.Tests;
@@ -134,8 +133,8 @@ public class PolygonSmoothTest
             {
                 var coordinate = rings[i].GetCoordinateN(j);
 
-                coordinate.X.Should().BeApproximately(expected[i][j][0], 6);
-                coordinate.Y.Should().BeApproximately(expected[i][j][1], 6);
+                coordinate.X.ShouldBe(expected[i][j][0], tolerance: 6);
+                coordinate.Y.ShouldBe(expected[i][j][1], tolerance: 6);
             }
         }
     }

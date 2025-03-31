@@ -1,4 +1,3 @@
-using FluentAssertions;
 using NetTopologySuite.Geometries;
 
 namespace DotTerritory.Tests;
@@ -39,6 +38,6 @@ public class AreaTest
 
         var area = Territory.Area(polygon);
 
-        area.SquareMeters.Should().BeApproximately(32819945055.137398, 0.001);
+        area.SquareMeters.ShouldBe(32819945055.137398, tolerance: 0.001);
     }
 }

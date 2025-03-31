@@ -1,4 +1,3 @@
-using FluentAssertions;
 using NetTopologySuite.Geometries;
 
 namespace DotTerritory.Tests;
@@ -16,9 +15,9 @@ public class BBoxTest
 
         var bbox = Territory.Bbox(line);
 
-        bbox.West.Should().Be(-82);
-        bbox.South.Should().Be(35);
-        bbox.East.Should().Be(-74);
-        bbox.North.Should().Be(42);
+        bbox.West.ShouldBe(-82);
+        bbox.South.ShouldBe(35);
+        bbox.East.ShouldBe(-74);
+        bbox.North.ShouldBe(42);
     }
 }
