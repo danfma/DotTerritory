@@ -15,7 +15,7 @@ public class PointToPolygonDistanceTests
                 new Coordinate(2, 1),
                 new Coordinate(2, 2),
                 new Coordinate(1, 2),
-                new Coordinate(1, 1)
+                new Coordinate(1, 1),
             }
         );
 
@@ -39,7 +39,7 @@ public class PointToPolygonDistanceTests
                 new Coordinate(2, 1),
                 new Coordinate(2, 2),
                 new Coordinate(1, 2),
-                new Coordinate(1, 1)
+                new Coordinate(1, 1),
             }
         );
 
@@ -64,7 +64,7 @@ public class PointToPolygonDistanceTests
                 new Coordinate(2, 1),
                 new Coordinate(2, 2),
                 new Coordinate(1, 2),
-                new Coordinate(1, 1)
+                new Coordinate(1, 1),
             }
         );
 
@@ -88,7 +88,7 @@ public class PointToPolygonDistanceTests
                 new Coordinate(2000, 0),
                 new Coordinate(2000, 1000),
                 new Coordinate(1000, 1000),
-                new Coordinate(1000, 0)
+                new Coordinate(1000, 0),
             }
         );
 
@@ -113,7 +113,7 @@ public class PointToPolygonDistanceTests
                 new Coordinate(2, 1),
                 new Coordinate(2, 2),
                 new Coordinate(1, 2),
-                new Coordinate(1, 1)
+                new Coordinate(1, 1),
             }
         );
 
@@ -138,7 +138,7 @@ public class PointToPolygonDistanceTests
             new Coordinate(3, 0),
             new Coordinate(3, 3),
             new Coordinate(0, 3),
-            new Coordinate(0, 0)
+            new Coordinate(0, 0),
         };
 
         // Create hole coordinates
@@ -148,7 +148,7 @@ public class PointToPolygonDistanceTests
             new Coordinate(2, 1),
             new Coordinate(2, 2),
             new Coordinate(1, 2),
-            new Coordinate(1, 1)
+            new Coordinate(1, 1),
         };
 
         var shell = geometryFactory.CreateLinearRing(shellCoords);
@@ -178,7 +178,7 @@ public class PointToPolygonDistanceTests
                 new Coordinate(2, 1),
                 new Coordinate(2, 2),
                 new Coordinate(1, 2),
-                new Coordinate(1, 1)
+                new Coordinate(1, 1),
             }
         );
 
@@ -189,7 +189,7 @@ public class PointToPolygonDistanceTests
                 new Coordinate(4, 3),
                 new Coordinate(4, 4),
                 new Coordinate(3, 4),
-                new Coordinate(3, 3)
+                new Coordinate(3, 3),
             }
         );
 
@@ -217,7 +217,7 @@ public class PointToPolygonDistanceTests
                 new Coordinate(2, 1),
                 new Coordinate(2, 2),
                 new Coordinate(1, 2),
-                new Coordinate(1, 1)
+                new Coordinate(1, 1),
             }
         );
 
@@ -228,7 +228,7 @@ public class PointToPolygonDistanceTests
                 new Coordinate(4, 3),
                 new Coordinate(4, 4),
                 new Coordinate(3, 4),
-                new Coordinate(3, 3)
+                new Coordinate(3, 3),
             }
         );
 

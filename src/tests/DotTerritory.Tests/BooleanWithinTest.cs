@@ -128,7 +128,7 @@ public class BooleanWithinTest
     public void LineStringWithinPolygonShouldReturnTrue()
     {
         // Arrange
-        var lineString = new LineString([new Coordinate(1, 1), new Coordinate(4, 4),]);
+        var lineString = new LineString([new Coordinate(1, 1), new Coordinate(4, 4)]);
 
         var polygon = new Polygon(
             new LinearRing(
@@ -153,7 +153,7 @@ public class BooleanWithinTest
     public void LineStringPartiallyOutsidePolygonShouldReturnFalse()
     {
         // Arrange
-        var lineString = new LineString([new Coordinate(1, 1), new Coordinate(10, 10),]);
+        var lineString = new LineString([new Coordinate(1, 1), new Coordinate(10, 10)]);
 
         var polygon = new Polygon(
             new LinearRing(

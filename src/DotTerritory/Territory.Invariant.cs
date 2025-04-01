@@ -82,7 +82,7 @@ public static partial class Territory
             MultiLineString _ => "MultiLineString",
             MultiPolygon _ => "MultiPolygon",
             GeometryCollection _ => "GeometryCollection",
-            _ => geometry.GeometryType // Fallback, though NTS types usually map directly
+            _ => geometry.GeometryType, // Fallback, though NTS types usually map directly
         };
     }
 

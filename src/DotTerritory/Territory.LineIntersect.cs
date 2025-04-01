@@ -39,16 +39,15 @@ public static partial class Territory
         return intersection switch
         {
             Point point => line1.Factory.CreateGeometryCollection([point]),
-            MultiPoint multiPoint
-                => line1.Factory.CreateGeometryCollection(
-                    Enumerable
-                        .Range(0, multiPoint.NumGeometries)
-                        .Select(i => multiPoint.GetGeometryN(i))
-                        .ToArray()
-                ),
+            MultiPoint multiPoint => line1.Factory.CreateGeometryCollection(
+                Enumerable
+                    .Range(0, multiPoint.NumGeometries)
+                    .Select(i => multiPoint.GetGeometryN(i))
+                    .ToArray()
+            ),
             LineString lineString => ExtractPointsFromLineString(lineString),
             GeometryCollection collection => ExtractPointsFromCollection(collection),
-            _ => line1.Factory.CreateGeometryCollection()
+            _ => line1.Factory.CreateGeometryCollection(),
         };
     }
 

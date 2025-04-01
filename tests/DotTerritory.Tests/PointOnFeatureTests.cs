@@ -48,7 +48,7 @@ public class PointOnFeatureTests
                 new Coordinate(10, 0),
                 new Coordinate(10, 10),
                 new Coordinate(0, 10),
-                new Coordinate(0, 0)
+                new Coordinate(0, 0),
             }
         );
 
@@ -77,7 +77,7 @@ public class PointOnFeatureTests
             new Coordinate(10, 0),
             new Coordinate(10, 10),
             new Coordinate(0, 10),
-            new Coordinate(0, 0)
+            new Coordinate(0, 0),
         };
 
         // Create hole coordinates
@@ -87,7 +87,7 @@ public class PointOnFeatureTests
             new Coordinate(6, 4),
             new Coordinate(6, 6),
             new Coordinate(4, 6),
-            new Coordinate(4, 4)
+            new Coordinate(4, 4),
         };
 
         var shell = geometryFactory.CreateLinearRing(shellCoords);
@@ -160,7 +160,7 @@ public class PointOnFeatureTests
                 new Coordinate(5, 0),
                 new Coordinate(5, 5),
                 new Coordinate(0, 5),
-                new Coordinate(0, 0)
+                new Coordinate(0, 0),
             }
         );
 
@@ -171,7 +171,7 @@ public class PointOnFeatureTests
                 new Coordinate(20, 10),
                 new Coordinate(20, 20),
                 new Coordinate(10, 20),
-                new Coordinate(10, 10)
+                new Coordinate(10, 10),
             }
         );
 

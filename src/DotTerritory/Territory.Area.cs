@@ -35,7 +35,7 @@ public static partial class Territory
         {
             Polygon polygon => CalculatePolygonArea(polygon),
             MultiPolygon multiPolygon => CalculateMultiPolygonArea(multiPolygon),
-            _ => UnitsNet.Area.Zero
+            _ => UnitsNet.Area.Zero,
         };
     }
 

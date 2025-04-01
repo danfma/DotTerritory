@@ -128,9 +128,9 @@ public class BooleanIntersectsTest
     public void IntersectingLineStringsShouldReturnTrue()
     {
         // Arrange
-        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(10, 10),]);
+        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(10, 10)]);
 
-        var lineString2 = new LineString([new Coordinate(0, 10), new Coordinate(10, 0),]);
+        var lineString2 = new LineString([new Coordinate(0, 10), new Coordinate(10, 0)]);
 
         // Act
         var result = Territory.BooleanIntersects(lineString1, lineString2);
@@ -143,9 +143,9 @@ public class BooleanIntersectsTest
     public void NonIntersectingLineStringsShouldReturnFalse()
     {
         // Arrange
-        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(5, 5),]);
+        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(5, 5)]);
 
-        var lineString2 = new LineString([new Coordinate(6, 6), new Coordinate(10, 10),]);
+        var lineString2 = new LineString([new Coordinate(6, 6), new Coordinate(10, 10)]);
 
         // Act
         var result = Territory.BooleanIntersects(lineString1, lineString2);

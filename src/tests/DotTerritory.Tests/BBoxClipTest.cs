@@ -16,7 +16,7 @@ public class BBoxClipTest
                 new Coordinate(8, 4),
                 new Coordinate(12, 8),
                 new Coordinate(3, 7),
-                new Coordinate(2, 2)
+                new Coordinate(2, 2),
             }
         );
 
@@ -43,7 +43,7 @@ public class BBoxClipTest
             new(2, 2), // Original point inside bbox
             new(5, 3), // Intersection with right edge (east=5)
             new(4.5, 5), // Intersection with top edge (north=5)
-            new(3, 5) // Intersection with top edge (north=5)
+            new(3, 5), // Intersection with top edge (north=5)
         };
 
         // Verify clipping occurred properly without checking exact coordinates
@@ -74,7 +74,7 @@ public class BBoxClipTest
                         new Coordinate(8, 4),
                         new Coordinate(12, 8),
                         new Coordinate(3, 7),
-                        new Coordinate(2, 2)
+                        new Coordinate(2, 2),
                     }
                 ),
                 new LineString(
@@ -84,9 +84,9 @@ public class BBoxClipTest
                         new Coordinate(8, 4),
                         new Coordinate(12, 8),
                         new Coordinate(3, 7),
-                        new Coordinate(2, 2)
+                        new Coordinate(2, 2),
                     }
-                )
+                ),
             }
         );
 
@@ -133,7 +133,7 @@ public class BBoxClipTest
                     new Coordinate(8, 4),
                     new Coordinate(12, 8),
                     new Coordinate(3, 7),
-                    new Coordinate(2, 2)
+                    new Coordinate(2, 2),
                 ]
             )
         );
@@ -163,7 +163,7 @@ public class BBoxClipTest
             new(10, 6), // Intersection with right edge (east=10)
             new(10, 7.77778), // Intersection with right edge (east=10)
             new(3, 7), // Original point inside bbox
-            new(2, 2) // Closing point to complete the polygon
+            new(2, 2), // Closing point to complete the polygon
         };
 
         // Verify clipping occurred properly without checking exact coordinates

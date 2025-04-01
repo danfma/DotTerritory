@@ -17,7 +17,7 @@ public class BooleanClockwiseTests
             new Coordinate(-75.343, 38.984), // go south
             new Coordinate(-74.343, 38.984), // go east
             new Coordinate(-74.343, 39.984), // go north
-            new Coordinate(-75.343, 39.984) // go west and close the ring
+            new Coordinate(-75.343, 39.984), // go west and close the ring
         };
 
         // Act
@@ -38,7 +38,7 @@ public class BooleanClockwiseTests
             new Coordinate(-74.343, 39.984), // go east
             new Coordinate(-74.343, 38.984), // go south
             new Coordinate(-75.343, 38.984), // go west
-            new Coordinate(-75.343, 39.984) // go north and close the ring
+            new Coordinate(-75.343, 39.984), // go north and close the ring
         };
 
         // Act
@@ -59,7 +59,7 @@ public class BooleanClockwiseTests
             new Coordinate(-75.343, 38.984),
             new Coordinate(-74.343, 38.984),
             new Coordinate(-74.343, 39.984),
-            new Coordinate(-75.343, 39.984)
+            new Coordinate(-75.343, 39.984),
         };
         var ring = geometryFactory.CreateLinearRing(coordinates);
 
@@ -81,7 +81,7 @@ public class BooleanClockwiseTests
             new Coordinate(-74.343, 39.984),
             new Coordinate(-74.343, 38.984),
             new Coordinate(-75.343, 38.984),
-            new Coordinate(-75.343, 39.984)
+            new Coordinate(-75.343, 39.984),
         };
         var ring = geometryFactory.CreateLinearRing(coordinates);
         var polygon = geometryFactory.CreatePolygon(ring);
@@ -102,7 +102,7 @@ public class BooleanClockwiseTests
         {
             new Coordinate(-75.343, 39.984),
             new Coordinate(-74.343, 39.984),
-            new Coordinate(-74.343, 38.984)
+            new Coordinate(-74.343, 38.984),
         };
 
         // Act & Assert

@@ -159,7 +159,7 @@ public class BooleanParallelTests
             {
                 new Coordinate(0, 0),
                 new Coordinate(0, 0), // Zero-length segment
-                new Coordinate(1, 1)
+                new Coordinate(1, 1),
             }
         );
         var line2 = geometryFactory.CreateLineString(
@@ -167,7 +167,7 @@ public class BooleanParallelTests
             {
                 new Coordinate(1, 0),
                 new Coordinate(1, 0), // Zero-length segment
-                new Coordinate(2, 1)
+                new Coordinate(2, 1),
             }
         );
 

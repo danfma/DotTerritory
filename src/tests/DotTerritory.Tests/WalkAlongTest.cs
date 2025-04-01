@@ -17,7 +17,7 @@ public class WalkAlongTest
                 new Coordinate(0, QuarterSide),
                 new Coordinate(QuarterSide, QuarterSide),
                 new Coordinate(QuarterSide, 0),
-                new Coordinate(0, 0)
+                new Coordinate(0, 0),
             ]
         );
 
@@ -64,7 +64,7 @@ public class WalkAlongTest
                 new Coordinate(0, QuarterSide),
                 new Coordinate(QuarterSide, QuarterSide),
                 new Coordinate(QuarterSide, 0),
-                new Coordinate(0, 0)
+                new Coordinate(0, 0),
             ]
         );
 
@@ -143,7 +143,7 @@ public class WalkAlongTest
                 new Coordinate(0, QuarterSide),
                 new Coordinate(QuarterSide, QuarterSide),
                 new Coordinate(QuarterSide, 0),
-                new Coordinate(0, 0)
+                new Coordinate(0, 0),
             ]
         );
 

@@ -10,7 +10,7 @@ public static partial class Territory
             MultiLineString multiLineString => BBoxClipMultiLineString(multiLineString, bbox),
             Polygon polygon => BBoxClipPolygon(polygon, bbox),
             MultiPolygon multiPolygon => BBoxClipMultiPolygon(multiPolygon, bbox),
-            _ => RaiseNotSupported(geometry)
+            _ => RaiseNotSupported(geometry),
         };
     }
 

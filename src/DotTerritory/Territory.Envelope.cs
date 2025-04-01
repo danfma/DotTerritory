@@ -34,7 +34,7 @@ public static partial class Territory
             new Coordinate(east, north),
             new Coordinate(east, south),
             new Coordinate(west, south),
-            new Coordinate(west, north) // Close the ring
+            new Coordinate(west, north), // Close the ring
         };
 
         // Create the linear ring for the polygon shell

@@ -128,9 +128,9 @@ public class BooleanDisjointTest
     public void LineStringsWithoutIntersectionShouldReturnTrue()
     {
         // Arrange
-        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(5, 5),]);
+        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(5, 5)]);
 
-        var lineString2 = new LineString([new Coordinate(10, 0), new Coordinate(15, 5),]);
+        var lineString2 = new LineString([new Coordinate(10, 0), new Coordinate(15, 5)]);
 
         // Act
         var result = Territory.BooleanDisjoint(lineString1, lineString2);
@@ -143,9 +143,9 @@ public class BooleanDisjointTest
     public void IntersectingLineStringsShouldReturnFalse()
     {
         // Arrange
-        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(5, 5),]);
+        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(5, 5)]);
 
-        var lineString2 = new LineString([new Coordinate(0, 5), new Coordinate(5, 0),]);
+        var lineString2 = new LineString([new Coordinate(0, 5), new Coordinate(5, 0)]);
 
         // Act
         var result = Territory.BooleanDisjoint(lineString1, lineString2);

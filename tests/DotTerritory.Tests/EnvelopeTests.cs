@@ -99,7 +99,7 @@ public class EnvelopeTests
             {
                 new Coordinate(-75.343, 39.984),
                 new Coordinate(-70.534, 42.123),
-                new Coordinate(-72.534, 40.123)
+                new Coordinate(-72.534, 40.123),
             }
         );
 

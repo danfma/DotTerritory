@@ -11,7 +11,7 @@ public class LineSliceAlongTests
         {
             new Coordinate(0, 0),
             new Coordinate(10, 0),
-            new Coordinate(20, 0)
+            new Coordinate(20, 0),
         };
         var line = geometryFactory.CreateLineString(coordinates);
         var startDistance = Length.FromMeters(5);
@@ -37,7 +37,7 @@ public class LineSliceAlongTests
         {
             new Coordinate(0, 0),
             new Coordinate(10, 0),
-            new Coordinate(20, 0)
+            new Coordinate(20, 0),
         };
         var line = geometryFactory.CreateLineString(coordinates);
         var startDistance = Length.FromMeters(0);
@@ -65,7 +65,7 @@ public class LineSliceAlongTests
         {
             new Coordinate(0, 0),
             new Coordinate(10, 0),
-            new Coordinate(20, 0)
+            new Coordinate(20, 0),
         };
         var line = geometryFactory.CreateLineString(coordinates);
         var distance = Length.FromMeters(5);
@@ -91,7 +91,7 @@ public class LineSliceAlongTests
         {
             new Coordinate(0, 0),
             new Coordinate(10, 0),
-            new Coordinate(20, 0)
+            new Coordinate(20, 0),
         };
         var line = geometryFactory.CreateLineString(coordinates);
         var startDistance = Length.FromMeters(15);
@@ -117,7 +117,7 @@ public class LineSliceAlongTests
         {
             new Coordinate(0, 0),
             new Coordinate(10, 0),
-            new Coordinate(20, 0)
+            new Coordinate(20, 0),
         };
         var line = geometryFactory.CreateLineString(coordinates);
         var startDistance = Length.FromMeters(-5); // Negative, should clamp to 0
@@ -146,7 +146,7 @@ public class LineSliceAlongTests
             new Coordinate(0, 0),
             new Coordinate(10, 10),
             new Coordinate(20, 0),
-            new Coordinate(30, 10)
+            new Coordinate(30, 10),
         };
         var line = geometryFactory.CreateLineString(coordinates);
 

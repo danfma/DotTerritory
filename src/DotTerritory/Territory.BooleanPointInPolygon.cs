@@ -104,11 +104,10 @@ public static partial class Territory
         {
             Polygon polygon => BooleanPointInPolygon(point, polygon, ignoreBoundary),
             MultiPolygon multiPolygon => BooleanPointInPolygon(point, multiPolygon, ignoreBoundary),
-            _
-                => throw new ArgumentException(
-                    "Geometry must be a Polygon or MultiPolygon",
-                    nameof(polygonFeature)
-                )
+            _ => throw new ArgumentException(
+                "Geometry must be a Polygon or MultiPolygon",
+                nameof(polygonFeature)
+            ),
         };
     }
 
@@ -136,11 +135,10 @@ public static partial class Territory
         {
             Polygon p => BooleanPointInPolygon(point, p, ignoreBoundary),
             MultiPolygon mp => BooleanPointInPolygon(point, mp, ignoreBoundary),
-            _
-                => throw new ArgumentException(
-                    "Geometry must be a Polygon or MultiPolygon",
-                    nameof(polygon)
-                )
+            _ => throw new ArgumentException(
+                "Geometry must be a Polygon or MultiPolygon",
+                nameof(polygon)
+            ),
         };
     }
 

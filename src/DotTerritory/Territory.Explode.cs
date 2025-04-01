@@ -43,7 +43,7 @@ public static partial class Territory
             MultiLineString multiLine => multiLine.Coordinates,
             MultiPolygon multiPolygon => multiPolygon.Coordinates,
             GeometryCollection collection => GetCoordinatesFromCollection(collection),
-            _ => []
+            _ => [],
         };
     }
 

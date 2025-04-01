@@ -75,7 +75,7 @@ public class CentroidTest
     public void LineStringCentroidShouldBeCorrect()
     {
         // Arrange
-        var lineString = new LineString([new Coordinate(0, 0), new Coordinate(10, 10),]);
+        var lineString = new LineString([new Coordinate(0, 0), new Coordinate(10, 10)]);
 
         // Act
         var centroid = Territory.Centroid(lineString);
@@ -89,7 +89,7 @@ public class CentroidTest
     public void MultiPointCentroidShouldBeCorrect()
     {
         // Arrange
-        var multiPoint = new MultiPoint([new Point(0, 0), new Point(10, 10), new Point(5, 5),]);
+        var multiPoint = new MultiPoint([new Point(0, 0), new Point(10, 10), new Point(5, 5)]);
 
         // Act
         var centroid = Territory.Centroid(multiPoint);

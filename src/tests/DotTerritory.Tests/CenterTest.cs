@@ -32,7 +32,7 @@ public class CenterTest
     public void LineStringCenterShouldBeCorrect()
     {
         // Arrange
-        var lineString = new LineString([new Coordinate(0, 0), new Coordinate(10, 10),]);
+        var lineString = new LineString([new Coordinate(0, 0), new Coordinate(10, 10)]);
 
         // Act
         var center = Territory.Center(lineString);
@@ -60,7 +60,7 @@ public class CenterTest
     public void MultiPointCenterShouldBeCorrect()
     {
         // Arrange
-        var points = new MultiPoint([new Point(0, 0), new Point(10, 10),]);
+        var points = new MultiPoint([new Point(0, 0), new Point(10, 10)]);
 
         // Act
         var center = Territory.Center(points);

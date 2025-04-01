@@ -23,11 +23,10 @@ public static partial class Territory
             MultiLineString multiLineString => CleanMultiLineString(multiLineString),
             Polygon polygon => CleanPolygon(polygon),
             MultiPolygon multiPolygon => CleanMultiPolygon(multiPolygon),
-            _
-                => throw new ArgumentException(
-                    $"Geometry type {geometry.GeometryType} not supported",
-                    nameof(geometry)
-                )
+            _ => throw new ArgumentException(
+                $"Geometry type {geometry.GeometryType} not supported",
+                nameof(geometry)
+            ),
         };
     }
 

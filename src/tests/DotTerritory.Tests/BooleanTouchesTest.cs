@@ -163,9 +163,9 @@ public class BooleanTouchesTest
     public void TouchingLineStringsShouldReturnTrue()
     {
         // Arrange
-        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(5, 5),]);
+        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(5, 5)]);
 
-        var lineString2 = new LineString([new Coordinate(5, 5), new Coordinate(10, 10),]);
+        var lineString2 = new LineString([new Coordinate(5, 5), new Coordinate(10, 10)]);
 
         // Act
         var result = Territory.BooleanTouches(lineString1, lineString2);

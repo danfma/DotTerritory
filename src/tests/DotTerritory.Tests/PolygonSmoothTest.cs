@@ -122,7 +122,7 @@ public class PolygonSmoothTest
                 [13.578125, 1.453125],
                 [14.609375, 1.484375],
                 [15.8125, 1.75],
-            ]
+            ],
         ];
 
         LineString[] rings = [smoothed.ExteriorRing, .. smoothed.InteriorRings];

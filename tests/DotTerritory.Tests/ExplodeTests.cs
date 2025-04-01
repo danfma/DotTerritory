@@ -52,7 +52,7 @@ public class ExplodeTests
                 new Coordinate(1, 0),
                 new Coordinate(1, 1),
                 new Coordinate(0, 1),
-                new Coordinate(0, 0)
+                new Coordinate(0, 0),
             ]
         );
 
@@ -124,7 +124,7 @@ public class ExplodeTests
                 new Coordinate(1, 0),
                 new Coordinate(1, 1),
                 new Coordinate(0, 1),
-                new Coordinate(0, 0)
+                new Coordinate(0, 0),
             ]
         );
 
@@ -134,7 +134,7 @@ public class ExplodeTests
                 new Coordinate(3, 2),
                 new Coordinate(3, 3),
                 new Coordinate(2, 3),
-                new Coordinate(2, 2)
+                new Coordinate(2, 2),
             ]
         );
 

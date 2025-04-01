@@ -14,7 +14,7 @@ public class SimplifyTests
                 new Coordinate(0.01, 0.01), // Should be removed with sufficient tolerance
                 new Coordinate(0.02, 0.01), // Should be removed with sufficient tolerance
                 new Coordinate(0.03, 0), // Should be removed with sufficient tolerance
-                new Coordinate(1, 0)
+                new Coordinate(1, 0),
             }
         );
 
@@ -41,7 +41,7 @@ public class SimplifyTests
                 new Coordinate(0.9, 0.9), // Should be removed with sufficient tolerance
                 new Coordinate(0.8, 1.1), // Should be removed with sufficient tolerance
                 new Coordinate(0, 1),
-                new Coordinate(0, 0)
+                new Coordinate(0, 0),
             }
         );
 
@@ -98,7 +98,7 @@ public class SimplifyTests
                 new Coordinate(0.9, 0.9),
                 new Coordinate(0.8, 1.1),
                 new Coordinate(0, 1),
-                new Coordinate(0, 0)
+                new Coordinate(0, 0),
             }
         );
 
@@ -121,7 +121,7 @@ public class SimplifyTests
                 new Coordinate(0.01, 0.01),
                 new Coordinate(0.02, 0.01),
                 new Coordinate(0.03, 0),
-                new Coordinate(1, 0)
+                new Coordinate(1, 0),
             }
         );
 
