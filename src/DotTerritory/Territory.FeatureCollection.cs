@@ -1,19 +1,18 @@
-using NetTopologySuite.Features;
-
 namespace DotTerritory;
 
+using System.Collections.Generic;
+using NetTopologySuite.Features;
+using NetTopologySuite.Geometries;
+
+/// <summary>
+/// Executes an action on each feature in a feature collection.
+/// Similar to the meta.featureEach function in Turf.js.
+/// </summary>
+/// <param name="featureCollection">The feature collection to iterate over</param>
+/// <param name="action">The action to execute for each feature</param>
 public static partial class Territory
 {
-    /// <summary>
-    /// Executes an action on each feature in a feature collection.
-    /// Similar to the meta.featureEach function in Turf.js.
-    /// </summary>
-    /// <param name="featureCollection">The feature collection to iterate over</param>
-    /// <param name="action">The action to execute for each feature</param>
-    public static void FeatureEach(
-        FeatureCollection featureCollection,
-        Action<IFeature, int> action
-    )
+    internal static void FeatureEach(FeatureCollection featureCollection, Action<IFeature, int> action)
     {
         if (featureCollection == null)
             throw new ArgumentNullException(nameof(featureCollection));
@@ -21,10 +20,11 @@ public static partial class Territory
         if (action == null)
             throw new ArgumentNullException(nameof(action));
 
-        for (int i = 0; i < featureCollection.Count; i++)
+        int i = 0;
+        foreach (var feature in featureCollection)
         {
-            var feature = featureCollection[i];
             action(feature, i);
+            i++;
         }
     }
 
@@ -87,7 +87,7 @@ public static partial class Territory
     /// <param name="featureCollection">The feature collection to iterate over</param>
     /// <param name="action">The action to execute for each coordinate</param>
     /// <param name="excludeWrapCoord">Whether to exclude the final coordinate of LinearRings that wraps back around to the first coordinate</param>
-    public static void CoordEach(
+    internal static void CoordEach(
         FeatureCollection featureCollection,
         Action<Coordinate, int> action,
         bool excludeWrapCoord = false

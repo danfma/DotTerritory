@@ -1,5 +1,3 @@
-using NetTopologySuite.Features;
-
 namespace DotTerritory;
 
 public static partial class Territory
@@ -99,7 +97,7 @@ public static partial class Territory
     /// </summary>
     /// <param name="featureCollection">GeoJSON FeatureCollection</param>
     /// <returns>The centroid point of the input feature collection</returns>
-    public static Point Centroid(FeatureCollection featureCollection)
+    internal static Point Centroid(IEnumerable<IFeature> featureCollection)
     {
         if (featureCollection == null)
             throw new ArgumentNullException(
@@ -107,7 +105,8 @@ public static partial class Territory
                 "FeatureCollection is required"
             );
 
-        if (featureCollection.Count == 0)
+        var features = featureCollection.ToList();
+        if (features.Count == 0)
             throw new ArgumentException("FeatureCollection is empty", nameof(featureCollection));
 
         // Calculate the centroid of all geometries combined

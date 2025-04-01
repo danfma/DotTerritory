@@ -1,19 +1,41 @@
-using NetTopologySuite.Features;
-
 namespace DotTerritory;
 
 public static partial class Territory
 {
-    public static BBox Bbox(FeatureCollection featureCollection)
+    /// <summary>
+    /// Calculates the bounding box of a feature collection
+    /// </summary>
+    internal static BBox Bbox(IEnumerable<IFeature> featureCollection)
     {
-        return featureCollection.Aggregate(default(BBox), (bbox, feature) => bbox + Bbox(feature));
+        var features = featureCollection.ToList();
+        if (features.Count == 0)
+        {
+            return default;
+        }
+
+        // Iniciar com o bbox do primeiro feature
+        var result = Bbox(features[0]);
+
+        // Combinar com os demais features
+        for (int i = 1; i < features.Count; i++)
+        {
+            result += Bbox(features[i]);
+        }
+
+        return result;
     }
 
+    /// <summary>
+    /// Calculates the bounding box of a feature
+    /// </summary>
     public static BBox Bbox(IFeature feature)
     {
         return Bbox(feature.Geometry);
     }
 
+    /// <summary>
+    /// Calculates the bounding box of a geometry
+    /// </summary>
     public static BBox Bbox(Geometry geometry)
     {
         if (geometry.IsEmpty)

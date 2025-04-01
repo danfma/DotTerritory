@@ -1,5 +1,3 @@
-using NetTopologySuite.Features;
-
 namespace DotTerritory;
 
 public static partial class Territory

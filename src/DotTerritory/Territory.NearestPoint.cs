@@ -1,5 +1,3 @@
-using NetTopologySuite.Features;
-
 namespace DotTerritory;
 
 public static partial class Territory
@@ -24,7 +22,7 @@ public static partial class Territory
         var targetCoord = targetPoint.Coordinate;
         Length minDistance = Length.FromKilometers(double.MaxValue);
         int nearestIndex = -1;
-        Point nearestPoint = null;
+        Point? nearestPoint = null;
 
         for (int i = 0; i < points.Length; i++)
         {
@@ -53,15 +51,16 @@ public static partial class Territory
     /// <param name="targetPoint">The reference point</param>
     /// <param name="pointFeatures">A feature collection of points to find the nearest one from</param>
     /// <returns>The closest point feature from the collection to the reference point, along with the distance and index</returns>
-    public static (IFeature Feature, Length Distance, int Index) NearestPoint(
+    internal static (IFeature Feature, Length Distance, int Index) NearestPoint(
         Point targetPoint,
-        FeatureCollection pointFeatures
+        IEnumerable<IFeature> pointFeatures
     )
     {
         if (targetPoint == null)
             throw new ArgumentNullException(nameof(targetPoint), "Target point is required");
 
-        if (pointFeatures == null || pointFeatures.Count == 0)
+        var features = pointFeatures?.ToList() ?? new List<IFeature>();
+        if (features.Count == 0)
             throw new ArgumentException(
                 "Feature collection is empty or null",
                 nameof(pointFeatures)
@@ -70,11 +69,11 @@ public static partial class Territory
         var targetCoord = targetPoint.Coordinate;
         Length minDistance = Length.FromKilometers(double.MaxValue);
         int nearestIndex = -1;
-        IFeature nearestFeature = null;
+        IFeature? nearestFeature = null;
 
-        for (int i = 0; i < pointFeatures.Count; i++)
+        for (int i = 0; i < features.Count; i++)
         {
-            var feature = pointFeatures[i];
+            var feature = features[i];
             if (feature?.Geometry is not Point point)
                 continue;
 
@@ -103,7 +102,7 @@ public static partial class Territory
     /// <param name="points">A collection of points to find the nearest one from</param>
     /// <returns>The closest point from the collection to the reference point, along with the distance and index</returns>
     public static (Point Point, Length Distance, int Index) NearestPoint(
-        IFeature targetPointFeature,
+        Feature targetPointFeature,
         params Point[] points
     )
     {
@@ -128,9 +127,9 @@ public static partial class Territory
     /// <param name="targetPointFeature">The reference point feature</param>
     /// <param name="pointFeatures">A feature collection of points to find the nearest one from</param>
     /// <returns>The closest point feature from the collection to the reference point, along with the distance and index</returns>
-    public static (IFeature Feature, Length Distance, int Index) NearestPoint(
+    internal static (IFeature Feature, Length Distance, int Index) NearestPoint(
         IFeature targetPointFeature,
-        FeatureCollection pointFeatures
+        IEnumerable<IFeature> pointFeatures
     )
     {
         if (targetPointFeature == null)

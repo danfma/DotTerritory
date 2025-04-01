@@ -1,5 +1,3 @@
-using NetTopologySuite.Features;
-
 namespace DotTerritory;
 
 public static partial class Territory
@@ -16,19 +14,32 @@ public static partial class Territory
     /// </summary>
     private static double Factor => EarthRadius.Meters * EarthRadius.Meters / 2.0;
 
-    public static Area Area(FeatureCollection featureCollection)
+    /// <summary>
+    /// Calculates the area of a feature collection
+    /// </summary>
+    internal static Area Area(IEnumerable<IFeature> featureCollection)
     {
-        return featureCollection.Aggregate(
-            UnitsNet.Area.Zero,
-            (area, feature) => area + Area(feature)
-        );
+        var totalArea = UnitsNet.Area.Zero;
+
+        foreach (var feature in featureCollection)
+        {
+            totalArea += Area(feature);
+        }
+
+        return totalArea;
     }
 
+    /// <summary>
+    /// Calculates the area of a feature
+    /// </summary>
     public static Area Area(IFeature feature)
     {
         return Area(feature.Geometry);
     }
 
+    /// <summary>
+    /// Calculates the area of a geometry
+    /// </summary>
     public static Area Area(Geometry geometry)
     {
         return geometry switch

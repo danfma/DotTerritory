@@ -1,6 +1,3 @@
-using NetTopologySuite.Geometries;
-using UnitsNet;
-
 namespace DotTerritory;
 
 public static partial class Territory

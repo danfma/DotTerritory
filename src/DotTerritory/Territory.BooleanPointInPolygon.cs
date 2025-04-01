@@ -1,5 +1,3 @@
-using NetTopologySuite.Features;
-
 namespace DotTerritory;
 
 public static partial class Territory
@@ -163,5 +161,42 @@ public static partial class Territory
             throw new ArgumentException("Geometry must be a Point", nameof(pointFeature));
 
         return BooleanPointInPolygon(point, polygonFeature, ignoreBoundary);
+    }
+
+    /// <summary>
+    /// Determines whether a point is inside a polygon
+    /// </summary>
+    /// <param name="pointFeature">Point to check</param>
+    /// <param name="polygonFeature">Polygon to check against</param>
+    /// <param name="ignoreBoundary">Whether to consider points on the boundary as inside or outside</param>
+    /// <returns>True if the point is inside the polygon, false otherwise</returns>
+    public static bool BooleanPointInPolygon(
+        Feature pointFeature,
+        Feature polygonFeature,
+        bool ignoreBoundary = false
+    )
+    {
+        if (pointFeature == null)
+            throw new ArgumentNullException(nameof(pointFeature), "Point feature is required");
+        if (polygonFeature == null)
+            throw new ArgumentNullException(nameof(polygonFeature), "Polygon feature is required");
+
+        if (pointFeature.Geometry is not Point point)
+            throw new ArgumentException(
+                "Point feature must have a Point geometry",
+                nameof(pointFeature)
+            );
+
+        var geometry = polygonFeature.Geometry;
+
+        return geometry switch
+        {
+            Polygon polygon => BooleanPointInPolygon(point, polygon, ignoreBoundary),
+            MultiPolygon multiPolygon => BooleanPointInPolygon(point, multiPolygon, ignoreBoundary),
+            _ => throw new ArgumentException(
+                "Polygon feature must have a Polygon or MultiPolygon geometry",
+                nameof(polygonFeature)
+            ),
+        };
     }
 }

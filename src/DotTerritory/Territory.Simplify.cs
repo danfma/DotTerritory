@@ -1,7 +1,4 @@
-using NetTopologySuite.Geometries;
 using NetTopologySuite.Simplify;
-using UnitsNet;
-using UnitsNet.Units;
 
 namespace DotTerritory;
 
@@ -31,7 +28,7 @@ public static partial class Territory
     public static Geometry Simplify(Geometry geom, double tolerance, bool highQuality = false)
     {
         if (geom == null || geom.IsEmpty)
-            return geom;
+            return geom!;
 
         if (tolerance <= 0)
             return geom.Copy();

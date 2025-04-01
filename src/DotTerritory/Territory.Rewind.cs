@@ -1,6 +1,4 @@
 using NetTopologySuite.Algorithm;
-using NetTopologySuite.Geometries;
-using NetTopologySuite.Geometries.Implementation; // For CoordinateArraySequence
 using NetTopologySuite.Geometries.Utilities;
 
 namespace DotTerritory;

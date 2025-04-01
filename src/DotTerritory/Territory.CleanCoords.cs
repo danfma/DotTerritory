@@ -1,5 +1,3 @@
-using NetTopologySuite.Features;
-
 namespace DotTerritory;
 
 public static partial class Territory
@@ -36,13 +34,26 @@ public static partial class Territory
     /// </summary>
     /// <param name="feature">The feature to clean</param>
     /// <returns>A new feature with the cleaned geometry</returns>
-    public static IFeature CleanCoords(IFeature feature)
+    public static Feature CleanCoords(Feature feature)
     {
         if (feature == null)
             throw new ArgumentNullException(nameof(feature), "Feature is required");
 
         var cleanedGeometry = CleanCoords(feature.Geometry);
-        return new Feature(cleanedGeometry, feature.Attributes);
+        var attributes = new AttributesTable();
+        
+        // Copiar as propriedades do feature original
+        if (feature.Attributes != null)
+        {
+            foreach (var name in feature.Attributes.GetNames())
+            {
+                attributes.Add(name, feature.Attributes[name]);
+            }
+        }
+        
+        var cleanedFeature = new Feature(cleanedGeometry, attributes);
+
+        return cleanedFeature;
     }
 
     private static MultiPoint CleanMultiPoint(MultiPoint multiPoint)

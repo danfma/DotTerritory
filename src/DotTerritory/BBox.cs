@@ -2,6 +2,12 @@ namespace DotTerritory;
 
 public readonly record struct BBox(double West, double South, double East, double North)
 {
+    // Adding MinX, MaxX, MinY, MaxY properties to maintain compatibility with code that expects them
+    public double MinX => West;
+    public double MinY => South;
+    public double MaxX => East;
+    public double MaxY => North;
+
     public static BBox operator +(BBox left, BBox right)
     {
         return new BBox(

@@ -1,5 +1,3 @@
-using NetTopologySuite.Features;
-
 namespace DotTerritory;
 
 public static partial class Territory
@@ -47,7 +45,7 @@ public static partial class Territory
     /// </summary>
     /// <param name="featureCollection">GeoJSON FeatureCollection</param>
     /// <returns>The center point of the bounding box of the input feature collection</returns>
-    public static Point Center(FeatureCollection featureCollection)
+    internal static Point Center(IEnumerable<IFeature> featureCollection)
     {
         if (featureCollection == null)
             throw new ArgumentNullException(
@@ -55,7 +53,8 @@ public static partial class Territory
                 "FeatureCollection is required"
             );
 
-        if (featureCollection.Count == 0)
+        var features = featureCollection.ToList();
+        if (features.Count == 0)
             throw new ArgumentException("FeatureCollection is empty", nameof(featureCollection));
 
         // Calculate the bounding box of the feature collection

@@ -1,5 +1,3 @@
-using NetTopologySuite.Geometries;
-
 namespace DotTerritory;
 
 public static partial class Territory
@@ -72,7 +70,7 @@ public static partial class Territory
         if (geometry is MultiLineString multiLineString && multiLineString.NumGeometries > 0)
         {
             // For MultiLineString, use the longest line
-            LineString longestLine = null;
+            LineString? longestLine = null;
             double maxLength = 0;
 
             for (int i = 0; i < multiLineString.NumGeometries; i++)
@@ -97,7 +95,7 @@ public static partial class Territory
         if (geometry is MultiPolygon multiPolygon && multiPolygon.NumGeometries > 0)
         {
             // For MultiPolygon, find the polygon with the largest area
-            Polygon largestPolygon = null;
+            Polygon? largestPolygon = null;
             double maxArea = 0;
 
             for (int i = 0; i < multiPolygon.NumGeometries; i++)
