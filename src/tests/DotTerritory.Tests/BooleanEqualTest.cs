@@ -19,7 +19,7 @@ public class BooleanEqualTest
                 ]
             )
         );
-        
+
         var polygon2 = new Polygon(
             new LinearRing(
                 [
@@ -31,14 +31,14 @@ public class BooleanEqualTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanEqual(polygon1, polygon2);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void DifferentPolygonsShouldNotBeEqual()
     {
@@ -54,7 +54,7 @@ public class BooleanEqualTest
                 ]
             )
         );
-        
+
         var polygon2 = new Polygon(
             new LinearRing(
                 [
@@ -66,14 +66,14 @@ public class BooleanEqualTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanEqual(polygon1, polygon2);
-        
+
         // Assert
         result.ShouldBeFalse();
     }
-    
+
     [Fact]
     public void SameGeometryWithSamePointOrderShouldBeEqual()
     {
@@ -89,7 +89,7 @@ public class BooleanEqualTest
                 ]
             )
         );
-        
+
         var polygon2 = new Polygon(
             new LinearRing(
                 [
@@ -101,14 +101,14 @@ public class BooleanEqualTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanEqual(polygon1, polygon2);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void SamePolygonWithDifferentPointOrderShouldNotBeEqual()
     {
@@ -124,7 +124,7 @@ public class BooleanEqualTest
                 ]
             )
         );
-        
+
         var polygon2 = new Polygon(
             new LinearRing(
                 [
@@ -136,39 +136,39 @@ public class BooleanEqualTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanEqual(polygon1, polygon2);
-        
+
         // Assert
         // BooleanEqual uses EqualsExact, which requires the exact same coordinate order
         result.ShouldBeFalse();
     }
-    
+
     [Fact]
     public void IdenticalPointsShouldBeEqual()
     {
         // Arrange
         var point1 = new Point(5, 5);
         var point2 = new Point(5, 5);
-        
+
         // Act
         var result = Territory.BooleanEqual(point1, point2);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void DifferentPointsShouldNotBeEqual()
     {
         // Arrange
         var point1 = new Point(5, 5);
         var point2 = new Point(6, 6);
-        
+
         // Act
         var result = Territory.BooleanEqual(point1, point2);
-        
+
         // Assert
         result.ShouldBeFalse();
     }

@@ -17,14 +17,16 @@ public static partial class Territory
 
         // Calculate the bounding box
         var bbox = Bbox(geometry);
-        
+
         // Calculate the center of the bounding box
         var x = (bbox.West + bbox.East) / 2;
         var y = (bbox.South + bbox.North) / 2;
-        
-        return NetTopologySuite.Geometries.GeometryFactory.Default.CreatePoint(new Coordinate(x, y));
+
+        return NetTopologySuite.Geometries.GeometryFactory.Default.CreatePoint(
+            new Coordinate(x, y)
+        );
     }
-    
+
     /// <summary>
     /// Takes a geometry or feature and returns the absolute center point of its bounding box.
     /// The center is calculated as the midpoint of the horizontal and vertical extents.
@@ -38,7 +40,7 @@ public static partial class Territory
 
         return Center(feature.Geometry);
     }
-    
+
     /// <summary>
     /// Takes a feature collection and returns the absolute center point of its bounding box.
     /// The center is calculated as the midpoint of the horizontal and vertical extents.
@@ -48,18 +50,23 @@ public static partial class Territory
     public static Point Center(FeatureCollection featureCollection)
     {
         if (featureCollection == null)
-            throw new ArgumentNullException(nameof(featureCollection), "FeatureCollection is required");
-            
+            throw new ArgumentNullException(
+                nameof(featureCollection),
+                "FeatureCollection is required"
+            );
+
         if (featureCollection.Count == 0)
             throw new ArgumentException("FeatureCollection is empty", nameof(featureCollection));
-        
+
         // Calculate the bounding box of the feature collection
         var bbox = Bbox(featureCollection);
-        
+
         // Calculate the center of the bounding box
         var x = (bbox.West + bbox.East) / 2;
         var y = (bbox.South + bbox.North) / 2;
-        
-        return NetTopologySuite.Geometries.GeometryFactory.Default.CreatePoint(new Coordinate(x, y));
+
+        return NetTopologySuite.Geometries.GeometryFactory.Default.CreatePoint(
+            new Coordinate(x, y)
+        );
     }
 }

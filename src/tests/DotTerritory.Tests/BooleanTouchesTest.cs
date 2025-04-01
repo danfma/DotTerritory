@@ -19,7 +19,7 @@ public class BooleanTouchesTest
                 ]
             )
         );
-        
+
         var polygon2 = new Polygon(
             new LinearRing(
                 [
@@ -31,14 +31,14 @@ public class BooleanTouchesTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanTouches(polygon1, polygon2);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void OverlappingPolygonsShouldReturnFalse()
     {
@@ -54,7 +54,7 @@ public class BooleanTouchesTest
                 ]
             )
         );
-        
+
         var polygon2 = new Polygon(
             new LinearRing(
                 [
@@ -66,14 +66,14 @@ public class BooleanTouchesTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanTouches(polygon1, polygon2);
-        
+
         // Assert
         result.ShouldBeFalse();
     }
-    
+
     [Fact]
     public void DisjointPolygonsShouldReturnFalse()
     {
@@ -89,7 +89,7 @@ public class BooleanTouchesTest
                 ]
             )
         );
-        
+
         var polygon2 = new Polygon(
             new LinearRing(
                 [
@@ -101,20 +101,20 @@ public class BooleanTouchesTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanTouches(polygon1, polygon2);
-        
+
         // Assert
         result.ShouldBeFalse();
     }
-    
+
     [Fact]
     public void PointTouchingPolygonBoundaryShouldReturnTrue()
     {
         // Arrange
         var point = new Point(5, 2.5);
-        
+
         var polygon = new Polygon(
             new LinearRing(
                 [
@@ -126,20 +126,20 @@ public class BooleanTouchesTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanTouches(point, polygon);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void PointInsidePolygonShouldReturnFalse()
     {
         // Arrange
         var point = new Point(2.5, 2.5);
-        
+
         var polygon = new Polygon(
             new LinearRing(
                 [
@@ -151,35 +151,25 @@ public class BooleanTouchesTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanTouches(point, polygon);
-        
+
         // Assert
         result.ShouldBeFalse();
     }
-    
+
     [Fact]
     public void TouchingLineStringsShouldReturnTrue()
     {
         // Arrange
-        var lineString1 = new LineString(
-            [
-                new Coordinate(0, 0),
-                new Coordinate(5, 5),
-            ]
-        );
-        
-        var lineString2 = new LineString(
-            [
-                new Coordinate(5, 5),
-                new Coordinate(10, 10),
-            ]
-        );
-        
+        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(5, 5),]);
+
+        var lineString2 = new LineString([new Coordinate(5, 5), new Coordinate(10, 10),]);
+
         // Act
         var result = Territory.BooleanTouches(lineString1, lineString2);
-        
+
         // Assert
         result.ShouldBeTrue();
     }

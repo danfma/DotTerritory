@@ -23,10 +23,10 @@ public static partial class Territory
     {
         var points = lineString.Coordinates;
         var length = points.Length;
-        
+
         if (length < 2)
             return lineString;
-            
+
         var codeA = BitCode(points[0], bbox);
         var part = new List<Coordinate>();
         var result = new List<List<Coordinate>>();
@@ -110,120 +110,123 @@ public static partial class Territory
 
         if (result.Count == 0)
             return new LineString(Array.Empty<Coordinate>());
-            
+
         if (result.Count == 1)
             return new LineString(result[0].ToArray());
-            
+
         return new LineString(result.SelectMany(x => x).ToArray());
     }
 
-    public static MultiLineString BBoxClipMultiLineString(MultiLineString multiLineString, BBox bbox)
+    public static MultiLineString BBoxClipMultiLineString(
+        MultiLineString multiLineString,
+        BBox bbox
+    )
     {
         var lines = new List<LineString>();
-        
+
         foreach (var geom in multiLineString.Geometries)
         {
             var line = (LineString)geom;
             var clipped = BBoxClipLineString(line, bbox);
-            
+
             if (!clipped.IsEmpty)
             {
                 lines.Add(clipped);
             }
         }
-        
+
         return new MultiLineString(lines.ToArray());
     }
-    
+
     public static Polygon BBoxClipPolygon(Polygon polygon, BBox bbox)
     {
         // Apply Sutherland-Hodgman algorithm to clip the polygon
         var rings = new List<LinearRing>();
-        
+
         // Clip the exterior ring
         var exteriorRing = polygon.ExteriorRing;
         var clippedExteriorRing = PolygonClip(exteriorRing.CoordinateSequence, bbox);
-        
+
         if (clippedExteriorRing.Count < 4) // Not enough points for a valid polygon
         {
             return Polygon.Empty;
         }
-        
+
         // Check if ring is closed
         var first = clippedExteriorRing[0];
         var last = clippedExteriorRing[^1];
-        
+
         if (first.X != last.X || first.Y != last.Y)
         {
             clippedExteriorRing.Add(clippedExteriorRing[0]); // Close the ring
         }
-        
+
         var exteriorLinearRing = new LinearRing(clippedExteriorRing.ToArray());
-        
+
         // Process holes (interior rings)
         var interiorRings = new List<LinearRing>();
         for (int i = 0; i < polygon.NumInteriorRings; i++)
         {
             var interiorRing = polygon.GetInteriorRingN(i);
             var clippedInteriorRing = PolygonClip(interiorRing.CoordinateSequence, bbox);
-            
+
             if (clippedInteriorRing.Count >= 4) // Need at least 4 points for a valid ring
             {
                 // Check if ring is closed
                 first = clippedInteriorRing[0];
                 last = clippedInteriorRing[^1];
-                
+
                 if (first.X != last.X || first.Y != last.Y)
                 {
                     clippedInteriorRing.Add(clippedInteriorRing[0]); // Close the ring
                 }
-                
+
                 interiorRings.Add(new LinearRing(clippedInteriorRing.ToArray()));
             }
         }
-        
+
         return new Polygon(exteriorLinearRing, interiorRings.ToArray());
     }
-    
+
     public static MultiPolygon BBoxClipMultiPolygon(MultiPolygon multiPolygon, BBox bbox)
     {
         var polygons = new List<Polygon>();
-        
+
         foreach (var geom in multiPolygon.Geometries)
         {
             var polygon = (Polygon)geom;
             var clipped = BBoxClipPolygon(polygon, bbox);
-            
+
             if (!clipped.IsEmpty)
             {
                 polygons.Add(clipped);
             }
         }
-        
+
         return new MultiPolygon(polygons.ToArray());
     }
-    
+
     private static List<Coordinate> PolygonClip(CoordinateSequence ring, BBox bbox)
     {
         var points = ring.ToCoordinateArray();
         List<Coordinate> result = new List<Coordinate>(points);
-        
+
         // Clip against each edge of the bbox
         for (byte edge = 1; edge <= 8; edge *= 2)
         {
             if (result.Count == 0)
                 break;
-                
+
             var inputList = result;
             result = new List<Coordinate>();
-            
+
             var prev = inputList[^1];
             var prevInside = (BitCode(prev, bbox) & edge) == 0;
-            
+
             foreach (var point in inputList)
             {
                 var inside = (BitCode(point, bbox) & edge) == 0;
-                
+
                 // If edge transitioned from outside to inside or vice versa, add intersection point
                 if (inside != prevInside)
                 {
@@ -233,18 +236,18 @@ public static partial class Territory
                         result.Add(intersection);
                     }
                 }
-                
+
                 // Add the current point if it's inside
                 if (inside)
                 {
                     result.Add(point);
                 }
-                
+
                 prev = point;
                 prevInside = inside;
             }
         }
-        
+
         return result;
     }
 

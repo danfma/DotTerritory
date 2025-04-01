@@ -12,11 +12,15 @@ public static partial class Territory
     /// <param name="polygon">Input polygon or multipolygon</param>
     /// <param name="ignoreBoundary">True if polygon boundary should be ignored when determining if the point is inside the polygon</param>
     /// <returns>True if the Point is inside the Polygon; false if the Point is not inside the Polygon</returns>
-    public static bool BooleanPointInPolygon(Point point, Polygon polygon, bool ignoreBoundary = false)
+    public static bool BooleanPointInPolygon(
+        Point point,
+        Polygon polygon,
+        bool ignoreBoundary = false
+    )
     {
         if (point == null)
             throw new ArgumentNullException(nameof(point), "Point is required");
-        
+
         if (polygon == null)
             throw new ArgumentNullException(nameof(polygon), "Polygon is required");
 
@@ -44,11 +48,15 @@ public static partial class Territory
     /// <param name="multiPolygon">Input multipolygon</param>
     /// <param name="ignoreBoundary">True if polygon boundary should be ignored when determining if the point is inside the polygon</param>
     /// <returns>True if the Point is inside the MultiPolygon; false if the Point is not inside the MultiPolygon</returns>
-    public static bool BooleanPointInPolygon(Point point, MultiPolygon multiPolygon, bool ignoreBoundary = false)
+    public static bool BooleanPointInPolygon(
+        Point point,
+        MultiPolygon multiPolygon,
+        bool ignoreBoundary = false
+    )
     {
         if (point == null)
             throw new ArgumentNullException(nameof(point), "Point is required");
-        
+
         if (multiPolygon == null)
             throw new ArgumentNullException(nameof(multiPolygon), "MultiPolygon is required");
 
@@ -83,7 +91,11 @@ public static partial class Territory
     /// <param name="polygonFeature">Input polygon or multipolygon feature</param>
     /// <param name="ignoreBoundary">True if polygon boundary should be ignored when determining if the point is inside the polygon</param>
     /// <returns>True if the Point is inside the Polygon; false if the Point is not inside the Polygon</returns>
-    public static bool BooleanPointInPolygon(Point point, IFeature polygonFeature, bool ignoreBoundary = false)
+    public static bool BooleanPointInPolygon(
+        Point point,
+        IFeature polygonFeature,
+        bool ignoreBoundary = false
+    )
     {
         if (polygonFeature == null)
             throw new ArgumentNullException(nameof(polygonFeature), "Polygon feature is required");
@@ -92,7 +104,11 @@ public static partial class Territory
         {
             Polygon polygon => BooleanPointInPolygon(point, polygon, ignoreBoundary),
             MultiPolygon multiPolygon => BooleanPointInPolygon(point, multiPolygon, ignoreBoundary),
-            _ => throw new ArgumentException("Geometry must be a Polygon or MultiPolygon", nameof(polygonFeature))
+            _
+                => throw new ArgumentException(
+                    "Geometry must be a Polygon or MultiPolygon",
+                    nameof(polygonFeature)
+                )
         };
     }
 
@@ -104,7 +120,11 @@ public static partial class Territory
     /// <param name="polygon">Input polygon or multipolygon</param>
     /// <param name="ignoreBoundary">True if polygon boundary should be ignored when determining if the point is inside the polygon</param>
     /// <returns>True if the Point is inside the Polygon; false if the Point is not inside the Polygon</returns>
-    public static bool BooleanPointInPolygon(IFeature pointFeature, Geometry polygon, bool ignoreBoundary = false)
+    public static bool BooleanPointInPolygon(
+        IFeature pointFeature,
+        Geometry polygon,
+        bool ignoreBoundary = false
+    )
     {
         if (pointFeature == null)
             throw new ArgumentNullException(nameof(pointFeature), "Point feature is required");
@@ -116,7 +136,11 @@ public static partial class Territory
         {
             Polygon p => BooleanPointInPolygon(point, p, ignoreBoundary),
             MultiPolygon mp => BooleanPointInPolygon(point, mp, ignoreBoundary),
-            _ => throw new ArgumentException("Geometry must be a Polygon or MultiPolygon", nameof(polygon))
+            _
+                => throw new ArgumentException(
+                    "Geometry must be a Polygon or MultiPolygon",
+                    nameof(polygon)
+                )
         };
     }
 
@@ -128,7 +152,11 @@ public static partial class Territory
     /// <param name="polygonFeature">Input polygon or multipolygon feature</param>
     /// <param name="ignoreBoundary">True if polygon boundary should be ignored when determining if the point is inside the polygon</param>
     /// <returns>True if the Point is inside the Polygon; false if the Point is not inside the Polygon</returns>
-    public static bool BooleanPointInPolygon(IFeature pointFeature, IFeature polygonFeature, bool ignoreBoundary = false)
+    public static bool BooleanPointInPolygon(
+        IFeature pointFeature,
+        IFeature polygonFeature,
+        bool ignoreBoundary = false
+    )
     {
         if (pointFeature == null)
             throw new ArgumentNullException(nameof(pointFeature), "Point feature is required");

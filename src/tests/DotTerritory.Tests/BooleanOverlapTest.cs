@@ -19,7 +19,7 @@ public class BooleanOverlapTest
                 ]
             )
         );
-        
+
         var polygon2 = new Polygon(
             new LinearRing(
                 [
@@ -31,14 +31,14 @@ public class BooleanOverlapTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanOverlap(polygon1, polygon2);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void NonOverlappingPolygonsShouldReturnFalse()
     {
@@ -54,7 +54,7 @@ public class BooleanOverlapTest
                 ]
             )
         );
-        
+
         var polygon2 = new Polygon(
             new LinearRing(
                 [
@@ -66,14 +66,14 @@ public class BooleanOverlapTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanOverlap(polygon1, polygon2);
-        
+
         // Assert
         result.ShouldBeFalse();
     }
-    
+
     [Fact]
     public void ContainedPolygonShouldReturnFalse()
     {
@@ -89,7 +89,7 @@ public class BooleanOverlapTest
                 ]
             )
         );
-        
+
         var polygon2 = new Polygon(
             new LinearRing(
                 [
@@ -101,61 +101,41 @@ public class BooleanOverlapTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanOverlap(polygon1, polygon2);
-        
+
         // Assert
         // BooleanOverlap returns false when one geometry completely contains the other
         result.ShouldBeFalse();
     }
-    
+
     [Fact]
     public void OverlappingLineStringsShouldReturnTrue()
     {
         // Arrange
-        var lineString1 = new LineString(
-            [
-                new Coordinate(0, 0),
-                new Coordinate(5, 5),
-            ]
-        );
-        
-        var lineString2 = new LineString(
-            [
-                new Coordinate(3, 3),
-                new Coordinate(8, 8),
-            ]
-        );
-        
+        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(5, 5),]);
+
+        var lineString2 = new LineString([new Coordinate(3, 3), new Coordinate(8, 8),]);
+
         // Act
         var result = Territory.BooleanOverlap(lineString1, lineString2);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void NonOverlappingLineStringsShouldReturnFalse()
     {
         // Arrange
-        var lineString1 = new LineString(
-            [
-                new Coordinate(0, 0),
-                new Coordinate(5, 5),
-            ]
-        );
-        
-        var lineString2 = new LineString(
-            [
-                new Coordinate(6, 6),
-                new Coordinate(10, 10),
-            ]
-        );
-        
+        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(5, 5),]);
+
+        var lineString2 = new LineString([new Coordinate(6, 6), new Coordinate(10, 10),]);
+
         // Act
         var result = Territory.BooleanOverlap(lineString1, lineString2);
-        
+
         // Assert
         result.ShouldBeFalse();
     }

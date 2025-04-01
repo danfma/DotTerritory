@@ -17,7 +17,7 @@ public static partial class Territory
     {
         if (feature1 == null)
             throw new ArgumentNullException(nameof(feature1), "Feature1 is required");
-        
+
         if (feature2 == null)
             throw new ArgumentNullException(nameof(feature2), "Feature2 is required");
 
@@ -46,7 +46,7 @@ public static partial class Territory
     {
         if (feature1 == null)
             throw new ArgumentNullException(nameof(feature1), "Feature1 is required");
-        
+
         if (feature2 == null)
             throw new ArgumentNullException(nameof(feature2), "Feature2 is required");
 
@@ -66,7 +66,7 @@ public static partial class Territory
     {
         if (feature1 == null)
             throw new ArgumentNullException(nameof(feature1), "Feature1 is required");
-        
+
         if (feature2 == null)
             throw new ArgumentNullException(nameof(feature2), "Feature2 is required");
 
@@ -86,7 +86,7 @@ public static partial class Territory
     {
         if (feature1 == null)
             throw new ArgumentNullException(nameof(feature1), "Feature1 is required");
-        
+
         if (feature2 == null)
             throw new ArgumentNullException(nameof(feature2), "Feature2 is required");
 

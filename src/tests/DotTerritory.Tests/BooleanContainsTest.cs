@@ -19,16 +19,16 @@ public class BooleanContainsTest
                 ]
             )
         );
-        
+
         var point = new Point(1.5, 1.5);
-        
+
         // Act
         var result = Territory.BooleanContains(polygon, point);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void PolygonShouldNotContainOutsidePoint()
     {
@@ -44,16 +44,16 @@ public class BooleanContainsTest
                 ]
             )
         );
-        
+
         var point = new Point(3, 3);
-        
+
         // Act
         var result = Territory.BooleanContains(polygon, point);
-        
+
         // Assert
         result.ShouldBeFalse();
     }
-    
+
     [Fact]
     public void LargerPolygonShouldContainSmallerPolygon()
     {
@@ -69,7 +69,7 @@ public class BooleanContainsTest
                 ]
             )
         );
-        
+
         var smallPolygon = new Polygon(
             new LinearRing(
                 [
@@ -81,14 +81,14 @@ public class BooleanContainsTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanContains(largePolygon, smallPolygon);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void PolygonWithHoleShouldNotContainPointInHole()
     {
@@ -102,7 +102,7 @@ public class BooleanContainsTest
                 new Coordinate(0, 0),
             ]
         );
-        
+
         var interiorRing = new LinearRing(
             [
                 new Coordinate(2, 2),
@@ -112,13 +112,13 @@ public class BooleanContainsTest
                 new Coordinate(2, 2),
             ]
         );
-        
+
         var polygon = new Polygon(exteriorRing, [interiorRing]);
         var point = new Point(3, 3);
-        
+
         // Act
         var result = Territory.BooleanContains(polygon, point);
-        
+
         // Assert
         result.ShouldBeFalse();
     }

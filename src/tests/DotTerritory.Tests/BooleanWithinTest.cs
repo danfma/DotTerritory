@@ -19,7 +19,7 @@ public class BooleanWithinTest
                 ]
             )
         );
-        
+
         var largePolygon = new Polygon(
             new LinearRing(
                 [
@@ -31,14 +31,14 @@ public class BooleanWithinTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanWithin(smallPolygon, largePolygon);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void LargerPolygonNotWithinSmallerPolygonShouldReturnFalse()
     {
@@ -54,7 +54,7 @@ public class BooleanWithinTest
                 ]
             )
         );
-        
+
         var largePolygon = new Polygon(
             new LinearRing(
                 [
@@ -66,20 +66,20 @@ public class BooleanWithinTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanWithin(largePolygon, smallPolygon);
-        
+
         // Assert
         result.ShouldBeFalse();
     }
-    
+
     [Fact]
     public void PointWithinPolygonShouldReturnTrue()
     {
         // Arrange
         var point = new Point(2.5, 2.5);
-        
+
         var polygon = new Polygon(
             new LinearRing(
                 [
@@ -91,20 +91,20 @@ public class BooleanWithinTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanWithin(point, polygon);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void PointOutsidePolygonShouldReturnFalse()
     {
         // Arrange
         var point = new Point(10, 10);
-        
+
         var polygon = new Polygon(
             new LinearRing(
                 [
@@ -116,25 +116,20 @@ public class BooleanWithinTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanWithin(point, polygon);
-        
+
         // Assert
         result.ShouldBeFalse();
     }
-    
+
     [Fact]
     public void LineStringWithinPolygonShouldReturnTrue()
     {
         // Arrange
-        var lineString = new LineString(
-            [
-                new Coordinate(1, 1),
-                new Coordinate(4, 4),
-            ]
-        );
-        
+        var lineString = new LineString([new Coordinate(1, 1), new Coordinate(4, 4),]);
+
         var polygon = new Polygon(
             new LinearRing(
                 [
@@ -146,25 +141,20 @@ public class BooleanWithinTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanWithin(lineString, polygon);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void LineStringPartiallyOutsidePolygonShouldReturnFalse()
     {
         // Arrange
-        var lineString = new LineString(
-            [
-                new Coordinate(1, 1),
-                new Coordinate(10, 10),
-            ]
-        );
-        
+        var lineString = new LineString([new Coordinate(1, 1), new Coordinate(10, 10),]);
+
         var polygon = new Polygon(
             new LinearRing(
                 [
@@ -176,10 +166,10 @@ public class BooleanWithinTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanWithin(lineString, polygon);
-        
+
         // Assert
         result.ShouldBeFalse();
     }

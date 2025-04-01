@@ -17,10 +17,10 @@ public class CleanCoordsTest
                 new Coordinate(2, 2), // Duplicate
             ]
         );
-        
+
         // Act
         var cleaned = Territory.CleanCoords(lineString);
-        
+
         // Assert
         // The implementation removes both duplicates and collinear points
         // Since 0,0 - 1,1 - 2,2 are collinear, only the endpoints remain
@@ -30,7 +30,7 @@ public class CleanCoordsTest
         cleaned.Coordinates[1].X.ShouldBe(2);
         cleaned.Coordinates[1].Y.ShouldBe(2);
     }
-    
+
     [Fact]
     public void RemoveCollinearPointsFromLineString()
     {
@@ -44,10 +44,10 @@ public class CleanCoordsTest
                 new Coordinate(4, 4),
             ]
         );
-        
+
         // Act
         var cleaned = Territory.CleanCoords(lineString);
-        
+
         // Assert
         cleaned.Coordinates.Length.ShouldBe(2);
         cleaned.Coordinates[0].X.ShouldBe(0);
@@ -55,7 +55,7 @@ public class CleanCoordsTest
         cleaned.Coordinates[1].X.ShouldBe(4);
         cleaned.Coordinates[1].Y.ShouldBe(4);
     }
-    
+
     [Fact]
     public void RemoveDuplicatePointsFromPolygon()
     {
@@ -73,10 +73,10 @@ public class CleanCoordsTest
                 ]
             )
         );
-        
+
         // Act
         var cleaned = (Polygon)Territory.CleanCoords(polygon);
-        
+
         // Assert
         cleaned.ExteriorRing.Coordinates.Length.ShouldBe(5);
         cleaned.ExteriorRing.Coordinates[0].X.ShouldBe(0);
@@ -90,7 +90,7 @@ public class CleanCoordsTest
         cleaned.ExteriorRing.Coordinates[4].X.ShouldBe(0);
         cleaned.ExteriorRing.Coordinates[4].Y.ShouldBe(0);
     }
-    
+
     [Fact]
     public void RemoveCollinearPointsFromPolygon()
     {
@@ -109,10 +109,10 @@ public class CleanCoordsTest
                 ]
             )
         );
-        
+
         // Act
         var cleaned = (Polygon)Territory.CleanCoords(polygon);
-        
+
         // Assert
         cleaned.ExteriorRing.Coordinates.Length.ShouldBe(5);
         cleaned.ExteriorRing.Coordinates[0].X.ShouldBe(0);
@@ -126,7 +126,7 @@ public class CleanCoordsTest
         cleaned.ExteriorRing.Coordinates[4].X.ShouldBe(0);
         cleaned.ExteriorRing.Coordinates[4].Y.ShouldBe(0);
     }
-    
+
     [Fact]
     public void CleanPolygonWithHole()
     {
@@ -141,7 +141,7 @@ public class CleanCoordsTest
                 new Coordinate(0, 0),
             ]
         );
-        
+
         var interiorRing = new LinearRing(
             [
                 new Coordinate(2, 2),
@@ -152,18 +152,18 @@ public class CleanCoordsTest
                 new Coordinate(2, 2),
             ]
         );
-        
+
         var polygon = new Polygon(exteriorRing, [interiorRing]);
-        
+
         // Act
         var cleaned = (Polygon)Territory.CleanCoords(polygon);
-        
+
         // Assert
         cleaned.ExteriorRing.Coordinates.Length.ShouldBe(5);
         cleaned.NumInteriorRings.ShouldBe(1);
         cleaned.GetInteriorRingN(0).Coordinates.Length.ShouldBe(5);
     }
-    
+
     [Fact]
     public void CleanMultiPoint()
     {
@@ -177,10 +177,10 @@ public class CleanCoordsTest
                 new Point(2, 2), // Duplicate
             ]
         );
-        
+
         // Act
         var cleaned = (MultiPoint)Territory.CleanCoords(multiPoint);
-        
+
         // Assert
         cleaned.NumGeometries.ShouldBe(3);
         ((Point)cleaned.GetGeometryN(0)).X.ShouldBe(0);

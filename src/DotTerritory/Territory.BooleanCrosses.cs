@@ -6,9 +6,9 @@ public static partial class Territory
 {
     /// <summary>
     /// Boolean-crosses returns true if the intersection of the two geometries results in a geometry
-    /// whose dimension is less than the maximum dimension of the two input geometries and the 
+    /// whose dimension is less than the maximum dimension of the two input geometries and the
     /// intersection set is interior to both geometries.
-    /// 
+    ///
     /// Supported geometry pairs for a=feature1, b=feature2:
     /// - MultiPoint/LineString
     /// - MultiPoint/Polygon
@@ -22,7 +22,7 @@ public static partial class Territory
     {
         if (feature1 == null)
             throw new ArgumentNullException(nameof(feature1), "Feature1 is required");
-        
+
         if (feature2 == null)
             throw new ArgumentNullException(nameof(feature2), "Feature2 is required");
 
@@ -33,9 +33,9 @@ public static partial class Territory
 
     /// <summary>
     /// Boolean-crosses returns true if the intersection of the two geometries results in a geometry
-    /// whose dimension is less than the maximum dimension of the two input geometries and the 
+    /// whose dimension is less than the maximum dimension of the two input geometries and the
     /// intersection set is interior to both geometries.
-    /// 
+    ///
     /// Supported geometry pairs for a=feature1, b=feature2:
     /// - MultiPoint/LineString
     /// - MultiPoint/Polygon
@@ -49,7 +49,7 @@ public static partial class Territory
     {
         if (feature1 == null)
             throw new ArgumentNullException(nameof(feature1), "Feature1 is required");
-        
+
         if (feature2 == null)
             throw new ArgumentNullException(nameof(feature2), "Feature2 is required");
 
@@ -58,9 +58,9 @@ public static partial class Territory
 
     /// <summary>
     /// Boolean-crosses returns true if the intersection of the two geometries results in a geometry
-    /// whose dimension is less than the maximum dimension of the two input geometries and the 
+    /// whose dimension is less than the maximum dimension of the two input geometries and the
     /// intersection set is interior to both geometries.
-    /// 
+    ///
     /// Supported geometry pairs for a=feature1, b=feature2:
     /// - MultiPoint/LineString
     /// - MultiPoint/Polygon
@@ -74,7 +74,7 @@ public static partial class Territory
     {
         if (feature1 == null)
             throw new ArgumentNullException(nameof(feature1), "Feature1 is required");
-        
+
         if (feature2 == null)
             throw new ArgumentNullException(nameof(feature2), "Feature2 is required");
 
@@ -83,9 +83,9 @@ public static partial class Territory
 
     /// <summary>
     /// Boolean-crosses returns true if the intersection of the two geometries results in a geometry
-    /// whose dimension is less than the maximum dimension of the two input geometries and the 
+    /// whose dimension is less than the maximum dimension of the two input geometries and the
     /// intersection set is interior to both geometries.
-    /// 
+    ///
     /// Supported geometry pairs for a=feature1, b=feature2:
     /// - MultiPoint/LineString
     /// - MultiPoint/Polygon
@@ -99,7 +99,7 @@ public static partial class Territory
     {
         if (feature1 == null)
             throw new ArgumentNullException(nameof(feature1), "Feature1 is required");
-        
+
         if (feature2 == null)
             throw new ArgumentNullException(nameof(feature2), "Feature2 is required");
 

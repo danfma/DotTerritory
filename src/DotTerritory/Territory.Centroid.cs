@@ -20,20 +20,24 @@ public static partial class Territory
         double xSum = 0;
         double ySum = 0;
         int count = 0;
-        
+
         // Use a coordinate sequence visitor pattern to enumerate all coordinates
-        CoordinateSequenceVisitor(geometry, coord => {
-            xSum += coord.X;
-            ySum += coord.Y;
-            count++;
-        });
-        
+        CoordinateSequenceVisitor(
+            geometry,
+            coord =>
+            {
+                xSum += coord.X;
+                ySum += coord.Y;
+                count++;
+            }
+        );
+
         if (count == 0)
             return new Point(0, 0); // Default for empty geometries
-            
+
         return new Point(xSum / count, ySum / count);
     }
-    
+
     private static void CoordinateSequenceVisitor(Geometry geometry, Action<Coordinate> action)
     {
         switch (geometry)
@@ -41,17 +45,17 @@ public static partial class Territory
             case Point point:
                 action(point.Coordinate);
                 break;
-                
+
             case LineString lineString:
                 foreach (var coord in lineString.Coordinates)
                     action(coord);
                 break;
-                
+
             case Polygon polygon:
                 // Process exterior ring
                 foreach (var coord in polygon.ExteriorRing.Coordinates)
                     action(coord);
-                    
+
                 // Process interior rings (holes)
                 for (int i = 0; i < polygon.NumInteriorRings; i++)
                 {
@@ -60,13 +64,13 @@ public static partial class Territory
                         action(coord);
                 }
                 break;
-                
+
             case GeometryCollection collection:
                 // Process all geometries in the collection
                 foreach (var geom in collection.Geometries)
                     CoordinateSequenceVisitor(geom, action);
                 break;
-                
+
             default:
                 // For any other geometry types, get all coordinates
                 foreach (var coord in geometry.Coordinates)
@@ -74,7 +78,7 @@ public static partial class Territory
                 break;
         }
     }
-    
+
     /// <summary>
     /// Takes a geometry or feature and returns the absolute centroid point of all coordinates.
     /// The centroid is simply the average of all coordinates, weighted by the number of occurrences.
@@ -88,7 +92,7 @@ public static partial class Territory
 
         return Centroid(feature.Geometry);
     }
-    
+
     /// <summary>
     /// Takes a feature collection and returns the absolute centroid point of all coordinates.
     /// The centroid is simply the average of all coordinates, weighted by the number of occurrences.
@@ -98,15 +102,21 @@ public static partial class Territory
     public static Point Centroid(FeatureCollection featureCollection)
     {
         if (featureCollection == null)
-            throw new ArgumentNullException(nameof(featureCollection), "FeatureCollection is required");
-            
+            throw new ArgumentNullException(
+                nameof(featureCollection),
+                "FeatureCollection is required"
+            );
+
         if (featureCollection.Count == 0)
             throw new ArgumentException("FeatureCollection is empty", nameof(featureCollection));
-        
+
         // Calculate the centroid of all geometries combined
         var geometries = featureCollection.Select(f => f.Geometry).ToArray();
-        var geometryCollection = NetTopologySuite.Geometries.GeometryFactory.Default.CreateGeometryCollection(geometries);
-        
+        var geometryCollection =
+            NetTopologySuite.Geometries.GeometryFactory.Default.CreateGeometryCollection(
+                geometries
+            );
+
         return Centroid(geometryCollection);
     }
 }

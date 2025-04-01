@@ -7,7 +7,7 @@ public static partial class Territory
     /// <summary>
     /// Boolean-overlap returns True if the geometries share some but not all points,
     /// and the intersection has the same dimension as the geometries themselves.
-    /// 
+    ///
     /// Supported geometry pairs for a=feature1, b=feature2:
     /// - MultiPoint/MultiPoint
     /// - LineString/LineString
@@ -24,7 +24,7 @@ public static partial class Territory
     {
         if (feature1 == null)
             throw new ArgumentNullException(nameof(feature1), "Feature1 is required");
-        
+
         if (feature2 == null)
             throw new ArgumentNullException(nameof(feature2), "Feature2 is required");
 
@@ -40,7 +40,7 @@ public static partial class Territory
     /// <summary>
     /// Boolean-overlap returns True if the geometries share some but not all points,
     /// and the intersection has the same dimension as the geometries themselves.
-    /// 
+    ///
     /// Supported geometry pairs for a=feature1, b=feature2:
     /// - MultiPoint/MultiPoint
     /// - LineString/LineString
@@ -57,7 +57,7 @@ public static partial class Territory
     {
         if (feature1 == null)
             throw new ArgumentNullException(nameof(feature1), "Feature1 is required");
-        
+
         if (feature2 == null)
             throw new ArgumentNullException(nameof(feature2), "Feature2 is required");
 
@@ -67,7 +67,7 @@ public static partial class Territory
     /// <summary>
     /// Boolean-overlap returns True if the geometries share some but not all points,
     /// and the intersection has the same dimension as the geometries themselves.
-    /// 
+    ///
     /// Supported geometry pairs for a=feature1, b=feature2:
     /// - MultiPoint/MultiPoint
     /// - LineString/LineString
@@ -84,7 +84,7 @@ public static partial class Territory
     {
         if (feature1 == null)
             throw new ArgumentNullException(nameof(feature1), "Feature1 is required");
-        
+
         if (feature2 == null)
             throw new ArgumentNullException(nameof(feature2), "Feature2 is required");
 
@@ -94,7 +94,7 @@ public static partial class Territory
     /// <summary>
     /// Boolean-overlap returns True if the geometries share some but not all points,
     /// and the intersection has the same dimension as the geometries themselves.
-    /// 
+    ///
     /// Supported geometry pairs for a=feature1, b=feature2:
     /// - MultiPoint/MultiPoint
     /// - LineString/LineString
@@ -111,7 +111,7 @@ public static partial class Territory
     {
         if (feature1 == null)
             throw new ArgumentNullException(nameof(feature1), "Feature1 is required");
-        
+
         if (feature2 == null)
             throw new ArgumentNullException(nameof(feature2), "Feature2 is required");
 

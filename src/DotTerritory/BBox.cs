@@ -11,7 +11,7 @@ public readonly record struct BBox(double West, double South, double East, doubl
             North: Math.Max(left.North, right.North)
         );
     }
-    
+
     /// <summary>
     /// Checks if a point is contained within the bounding box.
     /// </summary>

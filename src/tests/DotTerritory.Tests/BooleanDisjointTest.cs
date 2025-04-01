@@ -19,7 +19,7 @@ public class BooleanDisjointTest
                 ]
             )
         );
-        
+
         var polygon2 = new Polygon(
             new LinearRing(
                 [
@@ -31,14 +31,14 @@ public class BooleanDisjointTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanDisjoint(polygon1, polygon2);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void OverlappingPolygonsShouldReturnFalse()
     {
@@ -54,7 +54,7 @@ public class BooleanDisjointTest
                 ]
             )
         );
-        
+
         var polygon2 = new Polygon(
             new LinearRing(
                 [
@@ -66,14 +66,14 @@ public class BooleanDisjointTest
                 ]
             )
         );
-        
+
         // Act
         var result = Territory.BooleanDisjoint(polygon1, polygon2);
-        
+
         // Assert
         result.ShouldBeFalse();
     }
-    
+
     [Fact]
     public void DisjointPointsAndPolygonShouldReturnTrue()
     {
@@ -89,16 +89,16 @@ public class BooleanDisjointTest
                 ]
             )
         );
-        
+
         var point = new Point(10, 10);
-        
+
         // Act
         var result = Territory.BooleanDisjoint(polygon, point);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void PointInsidePolygonShouldReturnFalse()
     {
@@ -114,62 +114,42 @@ public class BooleanDisjointTest
                 ]
             )
         );
-        
+
         var point = new Point(2.5, 2.5);
-        
+
         // Act
         var result = Territory.BooleanDisjoint(polygon, point);
-        
+
         // Assert
         result.ShouldBeFalse();
     }
-    
+
     [Fact]
     public void LineStringsWithoutIntersectionShouldReturnTrue()
     {
         // Arrange
-        var lineString1 = new LineString(
-            [
-                new Coordinate(0, 0),
-                new Coordinate(5, 5),
-            ]
-        );
-        
-        var lineString2 = new LineString(
-            [
-                new Coordinate(10, 0),
-                new Coordinate(15, 5),
-            ]
-        );
-        
+        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(5, 5),]);
+
+        var lineString2 = new LineString([new Coordinate(10, 0), new Coordinate(15, 5),]);
+
         // Act
         var result = Territory.BooleanDisjoint(lineString1, lineString2);
-        
+
         // Assert
         result.ShouldBeTrue();
     }
-    
+
     [Fact]
     public void IntersectingLineStringsShouldReturnFalse()
     {
         // Arrange
-        var lineString1 = new LineString(
-            [
-                new Coordinate(0, 0),
-                new Coordinate(5, 5),
-            ]
-        );
-        
-        var lineString2 = new LineString(
-            [
-                new Coordinate(0, 5),
-                new Coordinate(5, 0),
-            ]
-        );
-        
+        var lineString1 = new LineString([new Coordinate(0, 0), new Coordinate(5, 5),]);
+
+        var lineString2 = new LineString([new Coordinate(0, 5), new Coordinate(5, 0),]);
+
         // Act
         var result = Territory.BooleanDisjoint(lineString1, lineString2);
-        
+
         // Assert
         result.ShouldBeFalse();
     }
