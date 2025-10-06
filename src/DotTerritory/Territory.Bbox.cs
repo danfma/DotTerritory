@@ -13,10 +13,10 @@ public static partial class Territory
             return default;
         }
 
-        // Iniciar com o bbox do primeiro feature
+        // Start with the bbox of the first feature
         var result = Bbox(features[0]);
 
-        // Combinar com os demais features
+        // Combine with the remaining features
         for (int i = 1; i < features.Count; i++)
         {
             result += Bbox(features[i]);
