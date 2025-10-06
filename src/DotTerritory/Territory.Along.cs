@@ -8,7 +8,9 @@ public static partial class Territory
     {
         if (distance < Length.Zero)
         {
-            line = new LineString(line.Coordinates.Reverse().ToArray());
+            var reversed = line.Coordinates.ToArray();
+            Array.Reverse(reversed);
+            line = new LineString(reversed);
             distance *= -1;
         }
 
