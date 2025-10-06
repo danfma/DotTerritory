@@ -6,7 +6,7 @@ Last Updated: October 6, 2025
 
 - **Total TurfJS packages:** 114
 - **Currently implemented in DotTerritory:** 72 (63%)
-- **Missing functions:** 45 (37%)
+- **Missing functions:** 42 (37%)
 
 ---
 
