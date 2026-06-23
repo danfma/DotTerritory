@@ -12,7 +12,10 @@ using NetTopologySuite.Geometries;
 /// <param name="action">The action to execute for each feature</param>
 public static partial class Territory
 {
-    internal static void FeatureEach(FeatureCollection featureCollection, Action<IFeature, int> action)
+    internal static void FeatureEach(
+        FeatureCollection featureCollection,
+        Action<IFeature, int> action
+    )
     {
         if (featureCollection == null)
             throw new ArgumentNullException(nameof(featureCollection));

@@ -1,0 +1,17 @@
+[msbuild]
+project = "DotTerritory.slnx"
+configuration = "Release"
+
+# Os testes usam TUnit/Microsoft.Testing.Platform, que o dotnet-releaser ainda não
+# executa corretamente (ele tenta o runner VSTest). Os testes rodam num passo dedicado
+# do CI (dotnet run sobre o projeto TUnit); aqui o releaser cuida só de build/pack/publish.
+[test]
+enable = false
+
+[github]
+user = "danfma"
+repo = "DotTerritory"
+version_prefix =  "v"
+
+[changelog]
+owners = ["danfma"]

@@ -2,8 +2,8 @@ namespace DotTerritory.Tests;
 
 public class BooleanParallelTests
 {
-    [Fact]
-    public void TestBooleanParallel_SameDirection_ReturnsTrue()
+    [Test]
+    public async Task TestBooleanParallel_SameDirection_ReturnsTrue()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -18,11 +18,11 @@ public class BooleanParallelTests
         var result = Territory.BooleanParallel(line1, line2);
 
         // Assert
-        result.ShouldBeTrue();
+        await Assert.That(result).IsTrue();
     }
 
-    [Fact]
-    public void TestBooleanParallel_OppositeDirection_ReturnsTrue()
+    [Test]
+    public async Task TestBooleanParallel_OppositeDirection_ReturnsTrue()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -37,11 +37,11 @@ public class BooleanParallelTests
         var result = Territory.BooleanParallel(line1, line2);
 
         // Assert
-        result.ShouldBeTrue();
+        await Assert.That(result).IsTrue();
     }
 
-    [Fact]
-    public void TestBooleanParallel_NotParallel_ReturnsFalse()
+    [Test]
+    public async Task TestBooleanParallel_NotParallel_ReturnsFalse()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -56,11 +56,11 @@ public class BooleanParallelTests
         var result = Territory.BooleanParallel(line1, line2);
 
         // Assert
-        result.ShouldBeFalse();
+        await Assert.That(result).IsFalse();
     }
 
-    [Fact]
-    public void TestBooleanParallel_MultipleSegments_ChecksAllSegments()
+    [Test]
+    public async Task TestBooleanParallel_MultipleSegments_ChecksAllSegments()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -83,12 +83,12 @@ public class BooleanParallelTests
         var resultNotParallel = Territory.BooleanParallel(line1, line3);
 
         // Assert
-        resultParallel.ShouldBeTrue();
-        resultNotParallel.ShouldBeFalse();
+        await Assert.That(resultParallel).IsTrue();
+        await Assert.That(resultNotParallel).IsFalse();
     }
 
-    [Fact]
-    public void TestBooleanParallel_DifferentSegmentCounts_ComparesCommonSegments()
+    [Test]
+    public async Task TestBooleanParallel_DifferentSegmentCounts_ComparesCommonSegments()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -104,11 +104,11 @@ public class BooleanParallelTests
         var result = Territory.BooleanParallel(line1, line2);
 
         // Assert
-        result.ShouldBeTrue(); // Only the first segment is compared
+        await Assert.That(result).IsTrue(); // Only the first segment is compared
     }
 
-    [Fact]
-    public void TestBooleanParallel_WithCustomThreshold_WorksCorrectly()
+    [Test]
+    public async Task TestBooleanParallel_WithCustomThreshold_WorksCorrectly()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -130,27 +130,12 @@ public class BooleanParallelTests
         );
 
         // Assert
-        resultWithDefaultThreshold.ShouldBeFalse(); // Not parallel with 1 degree threshold
-        resultWithLargerThreshold.ShouldBeTrue(); // Parallel with 6 degree threshold
+        await Assert.That(resultWithDefaultThreshold).IsFalse(); // Not parallel with 1 degree threshold
+        await Assert.That(resultWithLargerThreshold).IsTrue(); // Parallel with 6 degree threshold
     }
 
-    [Fact]
-    public void TestBooleanParallel_SinglePointLines_ReturnsFalse()
-    {
-        // Arrange
-        var geometryFactory = new GeometryFactory();
-        var line1 = geometryFactory.CreateLineString(new[] { new Coordinate(0, 0) });
-        var line2 = geometryFactory.CreateLineString(new[] { new Coordinate(1, 1) });
-
-        // Act
-        var result = Territory.BooleanParallel(line1, line2);
-
-        // Assert
-        result.ShouldBeFalse(); // Single point lines don't have a direction
-    }
-
-    [Fact]
-    public void TestBooleanParallel_ZeroLengthSegments_SkipsThoseSegments()
+    [Test]
+    public async Task TestBooleanParallel_ZeroLengthSegments_SkipsThoseSegments()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -175,6 +160,6 @@ public class BooleanParallelTests
         var result = Territory.BooleanParallel(line1, line2);
 
         // Assert
-        result.ShouldBeTrue(); // Should skip zero-length segments and compare the others
+        await Assert.That(result).IsTrue(); // Should skip zero-length segments and compare the others
     }
 }

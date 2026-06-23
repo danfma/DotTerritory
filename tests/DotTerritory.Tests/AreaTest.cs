@@ -1,0 +1,39 @@
+namespace DotTerritory.Tests;
+
+public class AreaTest
+{
+    [Test]
+    public async Task AreaCalculationShouldMatchTurfArea()
+    {
+        /*
+         const p = turf.polygon(
+               [
+                   [
+                       [-5, 52],
+                       [-4, 56],
+                       [-2, 51],
+                       [-7, 54],
+                       [-5, 52],
+                   ],
+               ],
+               {name: "poly1"},
+           )
+
+           console.log('area', turf.area(p)) // 32819945055.137398 m²
+         */
+
+        var polygon = new Polygon(
+            new LinearRing([
+                new Coordinate(-5, 52),
+                new Coordinate(-4, 56),
+                new Coordinate(-2, 51),
+                new Coordinate(-7, 54),
+                new Coordinate(-5, 52),
+            ])
+        );
+
+        var area = Territory.Area(polygon);
+
+        await Assert.That(area.SquareMeters).IsEqualTo(32819945055.137398).Within(0.001);
+    }
+}

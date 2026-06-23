@@ -1,13 +1,11 @@
 using NetTopologySuite.Geometries;
-using Shouldly;
-using Xunit;
 
 namespace DotTerritory.Tests;
 
 public class EnvelopeTests
 {
-    [Fact]
-    public void TestEnvelope_FromBbox_CreatesCorrectPolygon()
+    [Test]
+    public async Task TestEnvelope_FromBbox_CreatesCorrectPolygon()
     {
         // Arrange
         var bbox = new BBox(-75.343, 39.984, -70.534, 42.123);
@@ -16,34 +14,34 @@ public class EnvelopeTests
         var polygon = Territory.Envelope(bbox);
 
         // Assert
-        polygon.ShouldBeOfType<Polygon>();
+        await Assert.That(polygon).IsTypeOf<Polygon>();
 
         // Check that the polygon has the correct number of points
-        polygon.ExteriorRing.NumPoints.ShouldBe(5); // 4 corners + 1 to close the ring
+        await Assert.That(polygon.ExteriorRing.NumPoints).IsEqualTo(5); // 4 corners + 1 to close the ring
 
         // Check that the coordinates match the bbox corners
         var coords = polygon.ExteriorRing.Coordinates;
 
         // Coordinates should be in counter-clockwise order, starting from the northwest
-        coords[0].X.ShouldBe(bbox.West);
-        coords[0].Y.ShouldBe(bbox.North);
+        await Assert.That(coords[0].X).IsEqualTo(bbox.West);
+        await Assert.That(coords[0].Y).IsEqualTo(bbox.North);
 
-        coords[1].X.ShouldBe(bbox.East);
-        coords[1].Y.ShouldBe(bbox.North);
+        await Assert.That(coords[1].X).IsEqualTo(bbox.East);
+        await Assert.That(coords[1].Y).IsEqualTo(bbox.North);
 
-        coords[2].X.ShouldBe(bbox.East);
-        coords[2].Y.ShouldBe(bbox.South);
+        await Assert.That(coords[2].X).IsEqualTo(bbox.East);
+        await Assert.That(coords[2].Y).IsEqualTo(bbox.South);
 
-        coords[3].X.ShouldBe(bbox.West);
-        coords[3].Y.ShouldBe(bbox.South);
+        await Assert.That(coords[3].X).IsEqualTo(bbox.West);
+        await Assert.That(coords[3].Y).IsEqualTo(bbox.South);
 
         // Last point is the same as first to close the ring
-        coords[4].X.ShouldBe(coords[0].X);
-        coords[4].Y.ShouldBe(coords[0].Y);
+        await Assert.That(coords[4].X).IsEqualTo(coords[0].X);
+        await Assert.That(coords[4].Y).IsEqualTo(coords[0].Y);
     }
 
-    [Fact]
-    public void TestEnvelope_FromCoordinates_CreatesCorrectPolygon()
+    [Test]
+    public async Task TestEnvelope_FromCoordinates_CreatesCorrectPolygon()
     {
         // Arrange
         var west = -75.343;
@@ -55,18 +53,18 @@ public class EnvelopeTests
         var polygon = Territory.Envelope(west, south, east, north);
 
         // Assert
-        polygon.ShouldBeOfType<Polygon>();
+        await Assert.That(polygon).IsTypeOf<Polygon>();
 
         // Check that the polygon's envelope matches the bbox
         var envelope = polygon.EnvelopeInternal;
-        envelope.MinX.ShouldBe(west);
-        envelope.MinY.ShouldBe(south);
-        envelope.MaxX.ShouldBe(east);
-        envelope.MaxY.ShouldBe(north);
+        await Assert.That(envelope.MinX).IsEqualTo(west);
+        await Assert.That(envelope.MinY).IsEqualTo(south);
+        await Assert.That(envelope.MaxX).IsEqualTo(east);
+        await Assert.That(envelope.MaxY).IsEqualTo(north);
     }
 
-    [Fact]
-    public void TestEnvelope_FromGeometry_CreatesCorrectPolygon()
+    [Test]
+    public async Task TestEnvelope_FromGeometry_CreatesCorrectPolygon()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -76,7 +74,7 @@ public class EnvelopeTests
         var polygon = Territory.Envelope(point);
 
         // Assert
-        polygon.ShouldBeOfType<Polygon>();
+        await Assert.That(polygon).IsTypeOf<Polygon>();
 
         // The envelope of a point should be a polygon with the point's coordinates
         var coords = polygon.ExteriorRing.Coordinates;
@@ -84,13 +82,13 @@ public class EnvelopeTests
         // All coordinates should have the point's x,y values
         foreach (var coord in coords)
         {
-            coord.X.ShouldBe(point.X);
-            coord.Y.ShouldBe(point.Y);
+            await Assert.That(coord.X).IsEqualTo(point.X);
+            await Assert.That(coord.Y).IsEqualTo(point.Y);
         }
     }
 
-    [Fact]
-    public void TestEnvelope_FromComplexGeometry_CreatesBoundingRectangle()
+    [Test]
+    public async Task TestEnvelope_FromComplexGeometry_CreatesBoundingRectangle()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -107,15 +105,15 @@ public class EnvelopeTests
         var polygon = Territory.Envelope(lineString);
 
         // Assert
-        polygon.ShouldBeOfType<Polygon>();
+        await Assert.That(polygon).IsTypeOf<Polygon>();
 
         // Check that the polygon encompasses all points of the line
         var envelope = lineString.EnvelopeInternal;
         var polygonEnvelope = polygon.EnvelopeInternal;
 
-        polygonEnvelope.MinX.ShouldBe(envelope.MinX);
-        polygonEnvelope.MinY.ShouldBe(envelope.MinY);
-        polygonEnvelope.MaxX.ShouldBe(envelope.MaxX);
-        polygonEnvelope.MaxY.ShouldBe(envelope.MaxY);
+        await Assert.That(polygonEnvelope.MinX).IsEqualTo(envelope.MinX);
+        await Assert.That(polygonEnvelope.MinY).IsEqualTo(envelope.MinY);
+        await Assert.That(polygonEnvelope.MaxX).IsEqualTo(envelope.MaxX);
+        await Assert.That(polygonEnvelope.MaxY).IsEqualTo(envelope.MaxY);
     }
 }

@@ -1,31 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Version>0.8.0</Version>
+    <IsPackable>true</IsPackable>
+    <Title>DotTerritory</Title>
+    <Description>A port of the excellent TurfJs library to .NET on top of existing libraries like NetTopologySuite and UnitsNet.</Description>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <Nullable>enable</Nullable>
-        <Version>0.8.0</Version>
-        <IsPackable>true</IsPackable>
-        <Title>DotTerritory</Title>
-        <Description>A port of the excellent TurfJs library to .NET on top of existing libraries like NetTopologySuite and UnitsNet.</Description>
-    </PropertyGroup>
+  <PropertyGroup>
+    <Copyright>Daniel Ferreira Monteiro Alves</Copyright>
+    <Authors>Daniel Ferreira Monteiro Alves</Authors>
+    <PackageProjectUrl>https://github.com/danfma/DotTerritory</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/danfma/DotTerritory</RepositoryUrl>
+    <RepositoryType>GIT</RepositoryType>
+    <PackageTags>TurfJS NetTopologySuite UnitsNet GIS</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <Copyright>Daniel Ferreira Monteiro Alves</Copyright>
-        <Authors>Daniel Ferreira Monteiro Alves</Authors>
-        <PackageProjectUrl>https://github.com/danfma/DotTerritory</PackageProjectUrl>
-        <PackageLicenseExpression>MIT</PackageLicenseExpression>
-        <RepositoryUrl>https://github.com/danfma/DotTerritory</RepositoryUrl>
-        <RepositoryType>GIT</RepositoryType>
-        <PackageTags>TurfJS NetTopologySuite UnitsNet GIS</PackageTags>
-        <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    </PropertyGroup>
-
-    <ItemGroup>
-        <PackageReference Include="NetTopologySuite" Version="2.5.0"/>
-        <PackageReference Include="NetTopologySuite.Features" Version="2.2.0" />
-        <PackageReference Include="UnitsNet" Version="6.0.0-pre013" />
-        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All"/>
-    </ItemGroup>
-
+  <ItemGroup>
+    <PackageReference Include="NetTopologySuite" Version="2.5.0" />
+    <PackageReference Include="NetTopologySuite.Features" Version="2.2.0" />
+    <PackageReference Include="UnitsNet" Version="6.0.0-pre013" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+  </ItemGroup>
 </Project>

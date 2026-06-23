@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/benchmark/">
+    <Project Path="benchmark/TimeAndMemoryUsage/TimeAndMemoryUsage.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/DotTerritory.Playground/DotTerritory.Playground.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/DotTerritory.Tests/DotTerritory.Tests.csproj" />
+  </Folder>
+  <Project Path="src/DotTerritory/DotTerritory.csproj" />
+</Solution>

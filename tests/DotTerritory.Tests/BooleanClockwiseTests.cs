@@ -1,13 +1,11 @@
 using NetTopologySuite.Geometries;
-using Shouldly;
-using Xunit;
 
 namespace DotTerritory.Tests;
 
 public class BooleanClockwiseTests
 {
-    [Fact]
-    public void TestBooleanClockwise_ClockwiseRing_ReturnsTrue()
+    [Test]
+    public async Task TestBooleanClockwise_ClockwiseRing_ReturnsTrue()
     {
         // Arrange
         // Clockwise ring (in geographic coordinates, negative area)
@@ -24,11 +22,11 @@ public class BooleanClockwiseTests
         var isClockwise = Territory.BooleanClockwise(coordinates);
 
         // Assert
-        isClockwise.ShouldBeTrue();
+        await Assert.That(isClockwise).IsTrue();
     }
 
-    [Fact]
-    public void TestBooleanClockwise_CounterClockwiseRing_ReturnsFalse()
+    [Test]
+    public async Task TestBooleanClockwise_CounterClockwiseRing_ReturnsFalse()
     {
         // Arrange
         // Counter-clockwise ring (in geographic coordinates, positive area)
@@ -45,11 +43,11 @@ public class BooleanClockwiseTests
         var isClockwise = Territory.BooleanClockwise(coordinates);
 
         // Assert
-        isClockwise.ShouldBeFalse();
+        await Assert.That(isClockwise).IsFalse();
     }
 
-    [Fact]
-    public void TestBooleanClockwise_LinearRing_ReturnsCorrectWindingOrder()
+    [Test]
+    public async Task TestBooleanClockwise_LinearRing_ReturnsCorrectWindingOrder()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -67,11 +65,11 @@ public class BooleanClockwiseTests
         var isClockwise = Territory.BooleanClockwise(ring);
 
         // Assert
-        isClockwise.ShouldBeTrue();
+        await Assert.That(isClockwise).IsTrue();
     }
 
-    [Fact]
-    public void TestBooleanClockwise_Polygon_UsesExteriorRing()
+    [Test]
+    public async Task TestBooleanClockwise_Polygon_UsesExteriorRing()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -90,11 +88,11 @@ public class BooleanClockwiseTests
         var isClockwise = Territory.BooleanClockwise(polygon);
 
         // Assert
-        isClockwise.ShouldBeFalse();
+        await Assert.That(isClockwise).IsFalse();
     }
 
-    [Fact]
-    public void TestBooleanClockwise_InvalidRing_ThrowsException()
+    [Test]
+    public async Task TestBooleanClockwise_InvalidRing_ThrowsException()
     {
         // Arrange
         // Ring with fewer than 4 coordinates (minimum for a valid ring)
@@ -106,11 +104,13 @@ public class BooleanClockwiseTests
         };
 
         // Act & Assert
-        Should.Throw<ArgumentException>(() => Territory.BooleanClockwise(coordinates));
+        await Assert
+            .That(() => Territory.BooleanClockwise(coordinates))
+            .Throws<ArgumentException>();
     }
 
-    [Fact]
-    public void TestBooleanClockwise_NotClosedRing_ThrowsException()
+    [Test]
+    public async Task TestBooleanClockwise_NotClosedRing_ThrowsException()
     {
         // Arrange
         // Ring where first and last coordinate are not the same
@@ -123,6 +123,8 @@ public class BooleanClockwiseTests
         };
 
         // Act & Assert
-        Should.Throw<ArgumentException>(() => Territory.BooleanClockwise(coordinates));
+        await Assert
+            .That(() => Territory.BooleanClockwise(coordinates))
+            .Throws<ArgumentException>();
     }
 }

@@ -98,7 +98,7 @@ public static partial class Territory
             {
                 var attributes = new AttributesTable();
                 attributes.Add("isoline", breakValue);
-                
+
                 var feature = new Feature(line, attributes);
 
                 features.Add(feature);

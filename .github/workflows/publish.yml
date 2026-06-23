@@ -5,7 +5,7 @@ name: .NET
 
 on:
   push:
-    branches: 
+    branches:
       - "main"
     tags:
       - '*'
@@ -16,21 +16,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
       with:
         fetch-depth: 0
-    
+
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: 9.x
-    
+        dotnet-version: |
+          8.0.x
+          9.0.x
+          10.0.x
+
     - name: Restore dependencies
-      run: dotnet restore src/DotTerritory.sln
-    
-    - name: Install tools
-      run: dotnet tool install --global dotnet-releaser
-    
-    - name: Build, Tests, Cover, Pack and Publish (on push tag)
+      run: dotnet restore DotTerritory.slnx
+
+    - name: Restore tools
+      run: dotnet tool restore
+
+    - name: Run tests (TUnit / Microsoft.Testing.Platform)
+      run: dotnet run --project tests/DotTerritory.Tests/DotTerritory.Tests.csproj -c Release
+
+    - name: Build, Pack and Publish (on push tag)
       shell: bash
-      run: dotnet-releaser run --force --nuget-token "${{secrets.NUGET_TOKEN}}" --github-token "${{secrets.GITHUB_TOKEN}}" src/dotnet-releaser.toml
+      run: dotnet dotnet-releaser run --force --nuget-token "${{secrets.NUGET_TOKEN}}" --github-token "${{secrets.GITHUB_TOKEN}}" dotnet-releaser.toml

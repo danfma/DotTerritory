@@ -105,7 +105,7 @@ public static partial class Territory
                 var attributes = new AttributesTable();
                 attributes.Add("lowerValue", lowerBreak);
                 attributes.Add("upperValue", upperBreak);
-                
+
                 var feature = new Feature(polygon, attributes);
 
                 features.Add(feature);

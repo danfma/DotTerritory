@@ -41,7 +41,7 @@ public static partial class Territory
 
         var cleanedGeometry = CleanCoords(feature.Geometry);
         var attributes = new AttributesTable();
-        
+
         // Copiar as propriedades do feature original
         if (feature.Attributes != null)
         {
@@ -50,7 +50,7 @@ public static partial class Territory
                 attributes.Add(name, feature.Attributes[name]);
             }
         }
-        
+
         var cleanedFeature = new Feature(cleanedGeometry, attributes);
 
         return cleanedFeature;

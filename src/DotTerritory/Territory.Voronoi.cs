@@ -53,13 +53,13 @@ public static partial class Territory
         {
             var polygon = voronoiPolygons[i];
             var attributes = new AttributesTable();
-            
+
             // Add properties to indicate the corresponding input point
             if (i < points.Length)
             {
                 attributes.Add("point", points[i]);
             }
-            
+
             var feature = new Feature(polygon, attributes);
 
             features.Add(feature);

@@ -2,8 +2,8 @@ namespace DotTerritory.Tests;
 
 public class SimplifyTests
 {
-    [Fact]
-    public void TestSimplify_LineString_ReducesPoints()
+    [Test]
+    public async Task TestSimplify_LineString_ReducesPoints()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -19,16 +19,16 @@ public class SimplifyTests
         );
 
         // Act
-        var simplified = Territory.Simplify(line, 0.05);
+        var simplified = Territory.Simplify(line, 0.05, highQuality: false);
 
         // Assert
-        simplified.NumPoints.ShouldBe(2); // Only the start and end points should remain
-        simplified.GetCoordinateN(0).ShouldBe(new Coordinate(0, 0));
-        simplified.GetCoordinateN(1).ShouldBe(new Coordinate(1, 0));
+        await Assert.That(simplified.NumPoints).IsEqualTo(2); // Only the start and end points should remain
+        await Assert.That(simplified.Coordinates[0]).IsEqualTo(new Coordinate(0, 0));
+        await Assert.That(simplified.Coordinates[1]).IsEqualTo(new Coordinate(1, 0));
     }
 
-    [Fact]
-    public void TestSimplify_Polygon_PreservesTopology()
+    [Test]
+    public async Task TestSimplify_Polygon_PreservesTopology()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -46,29 +46,29 @@ public class SimplifyTests
         );
 
         // Act
-        var simplified = Territory.Simplify(polygon, 0.3);
+        var simplified = Territory.Simplify(polygon, 0.3, highQuality: false);
 
         // Assert
-        simplified.NumPoints.ShouldBe(5); // Simplified to a simple rectangle (5 points including the closing point)
-        simplified.IsValid.ShouldBeTrue(); // The topology should be preserved
+        await Assert.That(simplified.NumPoints).IsEqualTo(5); // Simplified to a simple rectangle (5 points including the closing point)
+        await Assert.That(simplified.IsValid).IsTrue(); // The topology should be preserved
     }
 
-    [Fact]
-    public void TestSimplify_EmptyGeometry_ReturnsEmptyGeometry()
+    [Test]
+    public async Task TestSimplify_EmptyGeometry_ReturnsEmptyGeometry()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
         var emptyLine = geometryFactory.CreateLineString(Array.Empty<Coordinate>());
 
         // Act
-        var simplified = Territory.Simplify(emptyLine, 0.1);
+        var simplified = Territory.Simplify(emptyLine, 0.1, highQuality: false);
 
         // Assert
-        simplified.IsEmpty.ShouldBeTrue();
+        await Assert.That(simplified.IsEmpty).IsTrue();
     }
 
-    [Fact]
-    public void TestSimplify_ZeroTolerance_ReturnsOriginalGeometry()
+    [Test]
+    public async Task TestSimplify_ZeroTolerance_ReturnsOriginalGeometry()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -77,15 +77,15 @@ public class SimplifyTests
         );
 
         // Act
-        var simplified = Territory.Simplify(line, 0);
+        var simplified = Territory.Simplify(line, 0, highQuality: false);
 
         // Assert
-        simplified.NumPoints.ShouldBe(line.NumPoints);
-        simplified.Coordinates.ShouldBe(line.Coordinates);
+        await Assert.That(simplified.NumPoints).IsEqualTo(line.NumPoints);
+        await Assert.That(simplified.Coordinates).IsEquivalentTo(line.Coordinates);
     }
 
-    [Fact]
-    public void TestSimplify_WithHighQuality_ReturnsValidGeometry()
+    [Test]
+    public async Task TestSimplify_WithHighQuality_ReturnsValidGeometry()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -106,11 +106,11 @@ public class SimplifyTests
         var simplified = Territory.Simplify(polygon, 0.3, highQuality: true);
 
         // Assert
-        simplified.IsValid.ShouldBeTrue();
+        await Assert.That(simplified.IsValid).IsTrue();
     }
 
-    [Fact]
-    public void TestSimplify_WithOptions_UsesCorrectQualitySetting()
+    [Test]
+    public async Task TestSimplify_WithOptions_UsesCorrectQualitySetting()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -136,15 +136,15 @@ public class SimplifyTests
         var simplifiedHQDirect = Territory.Simplify(line, 0.05, true);
 
         // Assert
-        simplifiedHQ.NumPoints.ShouldBe(simplifiedHQDirect.NumPoints);
-        simplifiedHQ.GetCoordinateN(0).ShouldBe(simplifiedHQDirect.GetCoordinateN(0));
-        simplifiedHQ
-            .GetCoordinateN(simplifiedHQ.NumPoints - 1)
-            .ShouldBe(simplifiedHQDirect.GetCoordinateN(simplifiedHQDirect.NumPoints - 1));
+        await Assert.That(simplifiedHQ.NumPoints).IsEqualTo(simplifiedHQDirect.NumPoints);
+        await Assert.That(simplifiedHQ.Coordinates[0]).IsEqualTo(simplifiedHQDirect.Coordinates[0]);
+        await Assert
+            .That(simplifiedHQ.Coordinates[simplifiedHQ.NumPoints - 1])
+            .IsEqualTo(simplifiedHQDirect.Coordinates[simplifiedHQDirect.NumPoints - 1]);
     }
 
-    [Fact]
-    public void TestSimplify_ComplexGeometry_ReducesSize()
+    [Test]
+    public async Task TestSimplify_ComplexGeometry_ReducesSize()
     {
         // Arrange
         var geometryFactory = new GeometryFactory();
@@ -164,10 +164,10 @@ public class SimplifyTests
         var complexPolygon = geometryFactory.CreatePolygon(circlePoints.ToArray());
 
         // Act
-        var simplified = Territory.Simplify(complexPolygon, 0.2);
+        var simplified = Territory.Simplify(complexPolygon, 0.2, highQuality: false);
 
         // Assert
-        simplified.NumPoints.ShouldBeLessThan(complexPolygon.NumPoints);
-        simplified.IsValid.ShouldBeTrue();
+        await Assert.That(simplified.NumPoints).IsLessThan(complexPolygon.NumPoints);
+        await Assert.That(simplified.IsValid).IsTrue();
     }
 }
