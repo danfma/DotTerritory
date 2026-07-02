@@ -1,4 +1,17 @@
-# DotTerritory (Not production ready - a toy project for now)
+# DotTerritory
+
+> [!WARNING]
+> **This project is archived and no longer maintained.**
+>
+> If you're looking for a .NET port of TurfJS, use **[Turfano](https://github.com/danfma/Turfano)** instead.
+> It takes an approach much closer to TurfJS (its own GeoJSON types and typed quantities, a faithful port of the
+> `@turf/*` function index) and keeps NetTopologySuite fully isolated: the core `Turfano` package has **zero external
+> dependencies** and is AOT/trimming friendly, while the optional `Turfano.NetTopologySuite` satellite bridges to NTS
+> only where a full planar geometry engine is genuinely needed (e.g. `Buffer`).
+>
+> DotTerritory remains available as a read-only reference, but it will not receive further updates.
+
+---
 
 A small package to port most functionalities from the excellent TurfJS library to .NET. It's based on the
 NetTopologySuite (for reusing most structures from this amazing library) and the UnitsNet (to keep units and values
